@@ -9,6 +9,10 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
+  handleClick = () => {
+    console.log("Click Happened");
+  }
+
   render() {
     const { movie } = this.props;
 
@@ -36,9 +40,7 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Director.Name}</span>
         </div>
 
-        <button>
-          <span>Back</span>
-        </button>
+        <button onClick={this.handleClick}>Back</button>
       </div>
     );
   }
