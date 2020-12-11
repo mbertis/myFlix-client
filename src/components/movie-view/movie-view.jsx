@@ -1,5 +1,7 @@
 import React from "react";
 
+import { MainView } from "../main-view/main-view";
+
 export class MovieView extends React.Component {
   constructor() {
     super();
@@ -33,6 +35,10 @@ export class MovieView extends React.Component {
           <span className="label">Director: </span>
           <span className="value">{movie.Director.Name}</span>
         </div>
+
+        <button>
+          <span>Back</span>
+        </button>
       </div>
     );
   }
