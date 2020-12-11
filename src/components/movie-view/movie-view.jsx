@@ -1,7 +1,5 @@
 import React from "react";
 
-import { MainView } from "../main-view/main-view";
-
 export class MovieView extends React.Component {
   constructor() {
     super();
@@ -9,8 +7,9 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
-  handleClick = () => {
-    console.log("Click Happened");
+  //This function causes the back button to reload the MainView page
+  refreshPage() {
+    window.location.reload(false);
   }
 
   render() {
@@ -40,7 +39,7 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Director.Name}</span>
         </div>
 
-        <button onClick={this.handleClick}>Back</button>
+        <button onClick={this.refreshPage}>Back</button>
       </div>
     );
   }
