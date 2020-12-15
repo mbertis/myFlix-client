@@ -10,16 +10,8 @@ export function LoginView(props) {
     e.preventDefault();
     console.log(username, password);
     // Send a request to the server for authentication then call props.onLoggedIn(username)
-    axios
-    .post("https://madison-myflix.herokuapp.com/users")
-    .then((response) => {
-      const username = response.username;
-      props.onLoggedIn(username);
-    })
-    .catch(function (error) {
-      console.log('no user found');
-    });    
-  };
+    props.onLoggedIn(username);
+    };
 
   return (
     <form>

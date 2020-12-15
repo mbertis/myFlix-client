@@ -31602,12 +31602,7 @@ function LoginView(props) {
     e.preventDefault();
     console.log(username, password); // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    _axios.default.post("https://madison-myflix.herokuapp.com/users").then(function (response) {
-      var username = response.username;
-      props.onLoggedIn(username);
-    }).catch(function (error) {
-      console.log('no user found');
-    });
+    props.onLoggedIn(username);
   };
 
   return _react.default.createElement("form", null, _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
