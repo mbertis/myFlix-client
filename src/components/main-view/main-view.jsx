@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 
+import { LoginView } from "../login-view/login-view";    //LoginView needs to get user details from MainView
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
 
@@ -10,7 +11,8 @@ export class MainView extends React.Component {
     //Initializes the state to an empty object so we can destructure (access the state's attributs) it later
     this.state = {
       movies: null,
-      selectedMovie: null
+      selectedMovie: null,
+      user: null
     }; //Initializing the state in the conductor allows me to access the state later by writing: const { /*something*/ } = this.state;
   }
   componentDidMount() {
@@ -26,21 +28,32 @@ export class MainView extends React.Component {
         console.log(error);
       });
   }
-
+  /*When a movie is clicked, this function updates the state of the 'selectedMovie' property to that selected movie*/
   onMovieClick(movie) {
     this.setState({
       selectedMovie: movie
     });
   }
+  /*When a user successfully logs in, this function updates the 'user' property in state to that particular user*/
+  onLoggedIn(user) {
+    this.setState({
+      user
+    });
+  }
 
   render() {
-    const { movies, selectedMovie } = this.state;
+    const { movies, selectedMovie, user } = this.state;
+
+    /*If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to LoginView*/
+    if(!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
 
     //Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
     return (
       <div className="main-view">
+
+      {/* If the state of 'selectedMovie' is not null, that selected movie will be returned. Otherwise, all movies will be returned */}
         {selectedMovie
         ? <MovieView movie = {selectedMovie}/>
         : movies.map(movie => (

@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 export class MovieCard extends React.Component {     //Exporting <MovieCard/> here allows it to be imported into 'MainView'
   render() {
@@ -10,3 +11,12 @@ export class MovieCard extends React.Component {     //Exporting <MovieCard/> he
     );
   }
 }
+
+MovieCard.propTypes = {
+  movie: PropTypes.shape({
+    Title: PropTypes.string.isRequired,
+    Description: PropTypes.string.isRequired,
+    ImagePath: PropTypes.string.isRequired
+  }).isRequired,
+  onClick: PropTypes.func.isRequired
+};
