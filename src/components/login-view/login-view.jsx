@@ -13,8 +13,8 @@ export function LoginView(props) {
     axios
     .post("https://madison-myflix.herokuapp.com/users")
     .then((response) => {
-      const data = response.data;
-      props.onLoggedIn(data);
+      const username = response.username;
+      props.onLoggedIn(username);
     })
     .catch(function (error) {
       console.log('no user found');
