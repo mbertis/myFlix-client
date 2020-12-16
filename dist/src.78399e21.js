@@ -34849,42 +34849,52 @@ function RegistrationView(props) {
     e.preventDefault();
     console.log(username, password, email, birthday); // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    _axios.default.post("https://madison-myflix.herokuapp.com/users").then(function (response) {
-      var username = response.username;
-      props.onLoggedIn(username);
-    }).catch(function (error) {
-      console.log(error);
-    });
+    props.onLoggedIn(username);
   };
 
-  return _react.default.createElement("form", null, _react.default.createElement("label", null, "Username:", _react.default.createElement("input", {
+  return _react.default.createElement(Form, {
+    className: "registration-form"
+  }, _react.default.createElement("h3", null, "Create an Account for myFlix"), _react.default.createElement(Form.Group, {
+    controlId: "formBasicUsername"
+  }, _react.default.createElement(Form.Label, null, "Username:"), _react.default.createElement(Form.Control, {
     type: "text",
     value: username,
+    placeholder: "Enter Username",
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement("label", null, "Password:", _react.default.createElement("input", {
+  })), _react.default.createElement(Form.Group, {
+    controlId: "formBasicPassword"
+  }, _react.default.createElement(Form.Label, null, "Password:"), _react.default.createElement(Form.Control, {
     type: "password",
     value: password,
+    placeholder: "Enter Password",
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement("label", null, "Email:", _react.default.createElement("input", {
+  })), _react.default.createElement(Form.Group, {
+    controllId: "formBasicEmail"
+  }, _react.default.createElement(Form.Label, null, "Email Adress:"), _react.default.createElement(Form.Control, {
     type: "email",
     value: email,
+    placeholder: "Enter Email Address",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
-  })), _react.default.createElement("label", null, "Birthday:", _react.default.createElement("input", {
+  })), _react.default.createElement(Form.Group, {
+    controlId: "formBasicBirthday"
+  }, _react.default.createElement(Form.Label, null, "Birthday:"), _react.default.createElement(Form.Control, {
     type: "string",
     value: birthday,
+    placeholder: "01/01/2001",
     onChange: function onChange(e) {
       return setBirthday(e.target.value);
     }
-  })), _react.default.createElement("button", {
-    type: "button",
+  })), _react.default.createElement(Button, {
+    variant: "primary",
+    type: "submit",
     onClick: handleSubmit
-  }, "Register"));
+  }, "Create Account"));
 }
 },{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";

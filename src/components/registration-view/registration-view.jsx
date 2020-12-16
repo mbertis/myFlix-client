@@ -12,36 +12,52 @@ export function RegistrationView(props) {
     e.preventDefault();
     console.log(username, password, email, birthday);
     // Send a request to the server for authentication then call props.onLoggedIn(username)
-    axios
-    .post("https://madison-myflix.herokuapp.com/users")
-    .then((response) => {
-      const username = response.username;
-      props.onLoggedIn(username);
-    })
-    .catch(function (error) {
-      console.log(error);
-    });    
+    props.onLoggedIn(username); 
   };
 
   return (
-    <form>
-      <label>
-        Username:
-        <input type="text" value={username} onChange={e => setUsername(e.target.value)}/>
-      </label>
-      <label>
-        Password:
-        <input type="password" value={password} onChange={e => setPassword(e.target.value)}/>
-      </label>
-      <label>
-        Email:
-        <input type="email" value={email} onChange={e => setEmail(e.target.value)}/>
-      </label>
-      <label>
-        Birthday:
-        <input type="string" value={birthday} onChange={e => setBirthday(e.target.value)}/>
-      </label>
-      <button type="button" onClick={handleSubmit}>Register</button>
-    </form>
+    <Form className="registration-form">
+    <h3>Create an Account for myFlix</h3>
+    <Form.Group controlId="formBasicUsername">
+      <Form.Label>Username:</Form.Label>
+      <Form.Control
+        type="text"
+        value={username}
+        placeholder="Enter Username"
+        onChange={(e) => setUsername(e.target.value)}
+      />
+    </Form.Group>
+
+    <Form.Group controlId="formBasicPassword">
+      <Form.Label>Password:</Form.Label>
+      <Form.Control
+        type="password"
+        value={password}
+        placeholder="Enter Password"
+        onChange={(e) => setPassword(e.target.value)}
+      />
+    </Form.Group>
+
+    <Form.Group controllId="formBasicEmail">
+      <Form.Label>Email Adress:</Form.Label>
+      <Form.Control
+      type="email"
+      value={email}
+      placeholder="Enter Email Address"
+      onChange={e => setEmail(e.target.value)}/>
+    </Form.Group>
+
+    <Form.Group controlId="formBasicBirthday">
+      <Form.Label>Birthday:</Form.Label>
+      <Form.Control
+      type="string"
+      value={birthday}
+      placeholder="01/01/2001"
+      onChange={e => setBirthday(e.target.value)}/>
+    </Form.Group>
+    <Button variant="primary" type="submit" onClick={handleSubmit}>
+      Create Account
+    </Button>
+  </Form>
   );
 }
