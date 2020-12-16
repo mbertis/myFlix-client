@@ -34727,18 +34727,18 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {};
     return _this;
-  } //This function causes the back button to reload the MainView page
+  } // This function causes the back button to reload the MainView page
+  // refreshPage() {
+  //   window.location.reload(false);
+  // }
 
 
   _createClass(MovieView, [{
-    key: "refreshPage",
-    value: function refreshPage() {
-      window.location.reload(false);
-    }
-  }, {
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
+      var _this$props = this.props,
+          movie = _this$props.movie,
+          buttonProp = _this$props.buttonProp;
       if (!movie) return null;
       return _react.default.createElement("div", {
         className: "movie-view"
@@ -34770,7 +34770,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, "Director: "), _react.default.createElement("span", {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement("button", {
-        onClick: this.refreshPage
+        onClick: buttonProp
       }, "Back"));
     }
   }]);
@@ -35007,6 +35007,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
     }
   }, {
+    key: "buttonClick",
+    value: function buttonClick() {
+      this.setState({
+        selectedMovie: null
+      });
+    }
+  }, {
     key: "render",
     value: function render() {
       var _this3 = this;
@@ -35031,7 +35038,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Container.default, {
         fluid: true
       }, selectedMovie ? _react.default.createElement(_movieView.MovieView, {
-        movie: selectedMovie
+        movie: selectedMovie,
+        buttonProp: function buttonProp() {
+          return _this3.buttonClick();
+        }
       }) : movies.map(function (movie) {
         return _react.default.createElement(_movieCard.MovieCard, {
           key: movie._id,

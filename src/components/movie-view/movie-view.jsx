@@ -8,13 +8,13 @@ export class MovieView extends React.Component {
     this.state = {};
   }
 
-  //This function causes the back button to reload the MainView page
-  refreshPage() {
-    window.location.reload(false);
-  }
+  // This function causes the back button to reload the MainView page
+  // refreshPage() {
+  //   window.location.reload(false);
+  // }
 
   render() {
-    const { movie } = this.props;
+    const { movie, buttonProp } = this.props;
 
     if (!movie) return null;
 
@@ -40,7 +40,7 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Director.Name}</span>
         </div>
 
-        <button onClick={this.refreshPage}>Back</button>
+        <button onClick={buttonProp}>Back</button>
       </div>
     );
   }

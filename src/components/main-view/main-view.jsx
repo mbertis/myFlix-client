@@ -44,6 +44,12 @@ export class MainView extends React.Component {
     });
   }
 
+  buttonClick() {
+    this.setState({
+      selectedMovie: null,
+    });
+  }
+
   render() {
     const { movies, selectedMovie, user } = this.state;
 
@@ -59,14 +65,17 @@ export class MainView extends React.Component {
         <Container fluid>
           {/* If the state of 'selectedMovie' is not null, that selected movie will be returned. Otherwise, all movies will be returned */}
           {selectedMovie ? (
-            <MovieView movie={selectedMovie} />
+            <MovieView 
+            movie={selectedMovie}
+            buttonProp={() => this.buttonClick()}
+             />
           ) : (
             movies.map((movie) => (
-                  <MovieCard
-                    key={movie._id}
-                    movie={movie}
-                    onClick={(movie) => this.onMovieClick(movie)}
-                  />
+              <MovieCard
+                key={movie._id}
+                movie={movie}
+                onClick={(movie) => this.onMovieClick(movie)}
+              />
             ))
           )}
         </Container>
