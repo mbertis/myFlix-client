@@ -34793,7 +34793,12 @@ MovieView.propTypes = {
   }).isRequired,
   onClick: _propTypes.default.func.isRequired
 };
-},{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../../../../../home/mbertis/.nvm/versions/node/v14.15.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/registration-view/registration-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -34803,9 +34808,7 @@ exports.RegistrationView = RegistrationView;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _axios = _interopRequireDefault(require("axios"));
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+require("./registration-view.scss");
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34896,7 +34899,7 @@ function RegistrationView(props) {
     onClick: handleSubmit
   }, "Create Account"));
 }
-},{"react":"../../node_modules/react/index.js","axios":"../../node_modules/axios/index.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
