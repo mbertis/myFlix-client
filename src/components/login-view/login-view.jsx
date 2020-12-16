@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import Form from "react-bootstrap/form";
 import Button from "react-bootstrap/button";
+import "./login-view.scss";
 
 export function LoginView(props) {
   const [username, setUsername] = useState("");
@@ -16,6 +17,7 @@ export function LoginView(props) {
 
   return (
     <Form className="login-form">
+      <h3>Sign In to myFlix</h3>
       <Form.Group controlId="formBasicUsername">
         <Form.Label>Username:</Form.Label>
         <Form.Control
@@ -36,7 +38,7 @@ export function LoginView(props) {
         />
       </Form.Group>
       <Button variant="primary" type="submit" onClick={handleSubmit}>
-        Submit
+        Sign In
       </Button>
     </Form>
   );
