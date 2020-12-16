@@ -57,7 +57,7 @@ export function RegistrationView(props) {
       placeholder="01/01/2001"
       onChange={e => setBirthday(e.target.value)}/>
     </Form.Group>
-    <Button variant="primary" type="submit" onClick={handleSubmit}>
+    <Button variant="info" type="submit" onClick={handleSubmit}>
       Create Account
     </Button>
   </Form>
