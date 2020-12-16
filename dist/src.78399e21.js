@@ -34808,7 +34808,13 @@ exports.RegistrationView = RegistrationView;
 
 var _react = _interopRequireWildcard(require("react"));
 
+var _form = _interopRequireDefault(require("react-bootstrap/form"));
+
+var _button = _interopRequireDefault(require("react-bootstrap/button"));
+
 require("./registration-view.scss");
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
 
@@ -34855,51 +34861,51 @@ function RegistrationView(props) {
     props.onLoggedIn(username);
   };
 
-  return _react.default.createElement(Form, {
+  return _react.default.createElement(_form.default, {
     className: "registration-form"
-  }, _react.default.createElement("h3", null, "Create an Account for myFlix"), _react.default.createElement(Form.Group, {
+  }, _react.default.createElement("h3", null, "Create an Account for myFlix"), _react.default.createElement(_form.default.Group, {
     controlId: "formBasicUsername"
-  }, _react.default.createElement(Form.Label, null, "Username:"), _react.default.createElement(Form.Control, {
+  }, _react.default.createElement(_form.default.Label, null, "Username:"), _react.default.createElement(_form.default.Control, {
     type: "text",
     value: username,
     placeholder: "Enter Username",
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement(Form.Group, {
+  })), _react.default.createElement(_form.default.Group, {
     controlId: "formBasicPassword"
-  }, _react.default.createElement(Form.Label, null, "Password:"), _react.default.createElement(Form.Control, {
+  }, _react.default.createElement(_form.default.Label, null, "Password:"), _react.default.createElement(_form.default.Control, {
     type: "password",
     value: password,
     placeholder: "Enter Password",
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement(Form.Group, {
+  })), _react.default.createElement(_form.default.Group, {
     controllId: "formBasicEmail"
-  }, _react.default.createElement(Form.Label, null, "Email Adress:"), _react.default.createElement(Form.Control, {
+  }, _react.default.createElement(_form.default.Label, null, "Email Adress:"), _react.default.createElement(_form.default.Control, {
     type: "email",
     value: email,
     placeholder: "Enter Email Address",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
-  })), _react.default.createElement(Form.Group, {
+  })), _react.default.createElement(_form.default.Group, {
     controlId: "formBasicBirthday"
-  }, _react.default.createElement(Form.Label, null, "Birthday:"), _react.default.createElement(Form.Control, {
+  }, _react.default.createElement(_form.default.Label, null, "Birthday:"), _react.default.createElement(_form.default.Control, {
     type: "string",
     value: birthday,
     placeholder: "01/01/2001",
     onChange: function onChange(e) {
       return setBirthday(e.target.value);
     }
-  })), _react.default.createElement(Button, {
+  })), _react.default.createElement(_button.default, {
     variant: "primary",
     type: "submit",
     onClick: handleSubmit
   }, "Create Account"));
 }
-},{"react":"../../node_modules/react/index.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
