@@ -34791,7 +34791,7 @@ MovieView.propTypes = {
       Name: _propTypes.default.string.isRequired
     })
   }).isRequired,
-  onClick: _propTypes.default.func.isRequired
+  buttonProp: _propTypes.default.func.isRequired
 };
 },{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
