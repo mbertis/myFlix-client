@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
+import "./main-view.scss";
 
 import { LoginView } from "../login-view/login-view"; //LoginView needs to get user details from MainView
 import { MovieCard } from "../movie-card/movie-card";
