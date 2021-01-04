@@ -34343,6 +34343,8 @@ var _form = _interopRequireDefault(require("react-bootstrap/form"));
 
 var _button = _interopRequireDefault(require("react-bootstrap/button"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 require("./login-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -34376,10 +34378,18 @@ function LoginView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     // Prevents default of refreshing page on Submit
-    e.preventDefault();
-    console.log(username, password); // Send a request to the server for authentication then call props.onLoggedIn(username)
+    e.preventDefault(); // console.log(username, password);
+    // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    props.onLoggedIn(username);
+    _axios.default.post("https://madison-myflix.herokuapp.com/login", {
+      Username: username,
+      Password: password
+    }).then(function (response) {
+      var data = response.data;
+      props.onLoggedIn(data); // changed from props.onLoggedIn(username) because I need the token as well as the username
+    }).catch(function (e) {
+      console.log("no such user");
+    });
   };
 
   return _react.default.createElement(_form.default, {
@@ -34408,7 +34418,7 @@ function LoginView(props) {
     onClick: handleSubmit
   }, "Sign In"));
 }
-},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -35000,18 +35010,34 @@ var MainView = /*#__PURE__*/function (_React$Component) {
   }
 
   _createClass(MainView, [{
-    key: "componentDidMount",
-    value: function componentDidMount() {
+    key: "getMovies",
+    value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get("https://madison-myflix.herokuapp.com/movies").then(function (response) {
-        // Assign the result to the state
+      _axios.default.get("https://madison-myflix.herokuapp.com/movies", {
+        headers: {
+          Authorization: "Bearer ${token}"
+        }
+      }).then(function (response) {
+        // Assign result to the state
         _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
         console.log(error);
       });
+    }
+  }, {
+    key: "componentDidMount",
+    value: function componentDidMount() {
+      var accessToken = localStorage.getItem("token");
+
+      if (accessToken !== null) {
+        this.setState({
+          user: localStorage.getItem("user")
+        });
+        this.getMovies(accessToken);
+      }
     }
     /*When a movie is clicked, this function updates the state of the 'selectedMovie' property to that selected movie*/
 
@@ -35026,10 +35052,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
   }, {
     key: "onLoggedIn",
-    value: function onLoggedIn(user) {
+    value: function onLoggedIn(authData) {
+      console.log(authData); //need both user and token. When a user logs in, the props onLoggedIn(data) is passed to LoginView and triggers onLoggedIn(authData) in MainView. This updates state with authData.
+
       this.setState({
-        user: user
+        user: authData.user.Username
       });
+      localStorage.setItem("token", authData.token); //auth information received from handleSubmit method is stored in localStorage
+
+      localStorage.setItem("user", authData.user.Username);
+      this.getMovies(authData.token);
     }
   }, {
     key: "buttonClick",
@@ -35179,7 +35211,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50303" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61724" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
