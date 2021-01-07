@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import Button from "react-bootstrap/Button";
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "./main-view.scss";
@@ -21,25 +22,26 @@ export class MainView extends React.Component {
   }
 
   getMovies(token) {
-    axios.get("https://madison-myflix.herokuapp.com/movies", {
-      headers: {Authorization: "Bearer ${token}"}
-    })
-    .then(response => {
-      // Assign result to the state
-      this.setState({
-        movies: response.data
+    axios
+      .get("https://madison-myflix.herokuapp.com/movies", {
+        headers: { Authorization: "Bearer ${token}" },
+      })
+      .then((response) => {
+        // Assign result to the state
+        this.setState({
+          movies: response.data,
+        });
+      })
+      .catch(function (error) {
+        console.log(error);
       });
-    })
-    .catch(function(error) {
-      console.log(error);
-    });
   }
 
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
       this.setState({
-        user: localStorage.getItem("user")
+        user: localStorage.getItem("user"),
       });
       this.getMovies(accessToken);
     }
@@ -52,12 +54,12 @@ export class MainView extends React.Component {
   }
   /*When a user successfully logs in, this function updates the 'user' property in state to that particular user*/
   onLoggedIn(authData) {
-    console.log(authData);  //need both user and token. When a user logs in, the props onLoggedIn(data) is passed to LoginView and triggers onLoggedIn(authData) in MainView. This updates state with authData.
+    console.log(authData); //need both user and token. When a user logs in, the props onLoggedIn(data) is passed to LoginView and triggers onLoggedIn(authData) in MainView. This updates state with authData.
     this.setState({
-      user: authData.user.Username
+      user: authData.user.Username,
     });
 
-    localStorage.setItem("token", authData.token);    //auth information received from handleSubmit method is stored in localStorage
+    localStorage.setItem("token", authData.token); //auth information received from handleSubmit method is stored in localStorage
     localStorage.setItem("user", authData.user.Username);
     this.getMovies(authData.token);
   }
@@ -87,27 +89,27 @@ export class MainView extends React.Component {
     return (
       <div className="main-view">
         <Button variant="info" type="submit" onClick={this.onLogOut}>
-        Log Out
-      </Button>
+          Log Out
+        </Button>
         <div className="container">
           <div className="row">
             {/* <div className="col-sm"> */}
-              {/* <Container fluid> */}
-              {/* If the state of 'selectedMovie' is not null, that selected movie will be returned. Otherwise, all movies will be returned */}
-              {selectedMovie ? (
-                <MovieView
-                  movie={selectedMovie}
-                  buttonProp={() => this.buttonClick()}
+            {/* <Container fluid> */}
+            {/* If the state of 'selectedMovie' is not null, that selected movie will be returned. Otherwise, all movies will be returned */}
+            {selectedMovie ? (
+              <MovieView
+                movie={selectedMovie}
+                buttonProp={() => this.buttonClick()}
+              />
+            ) : (
+              movies.map((movie) => (
+                <MovieCard
+                  key={movie._id}
+                  movie={movie}
+                  onClick={(movie) => this.onMovieClick(movie)}
                 />
-              ) : (
-                movies.map((movie) => (
-                  <MovieCard
-                    key={movie._id}
-                    movie={movie}
-                    onClick={(movie) => this.onMovieClick(movie)}
-                  />
-                ))
-              )}
+              ))
+            )}
             {/* </div> */}
           </div>
         </div>
