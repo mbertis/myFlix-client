@@ -35069,6 +35069,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         selectedMovie: null
       });
+    } // allows users to log out by removing the token and the user from localStorage
+
+  }, {
+    key: "onLogOut",
+    value: function onLogOut() {
+      localStorage.removeItem("token");
+      localStorage.removeItem("user");
     }
   }, {
     key: "render",
@@ -35092,7 +35099,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       });
       return _react.default.createElement("div", {
         className: "main-view"
-      }, _react.default.createElement("div", {
+      }, _react.default.createElement(Button, {
+        variant: "info",
+        type: "submit",
+        onClick: this.onLogOut
+      }, "Log Out"), _react.default.createElement("div", {
         className: "container"
       }, _react.default.createElement("div", {
         className: "row"
@@ -35211,7 +35222,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61724" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53938" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

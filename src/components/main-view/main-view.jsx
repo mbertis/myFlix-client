@@ -68,6 +68,12 @@ export class MainView extends React.Component {
     });
   }
 
+  // allows users to log out by removing the token and the user from localStorage
+  onLogOut() {
+    localStorage.removeItem("token");
+    localStorage.removeItem("user");
+  }
+
   render() {
     const { movies, selectedMovie, user } = this.state;
 
@@ -80,6 +86,9 @@ export class MainView extends React.Component {
 
     return (
       <div className="main-view">
+        <Button variant="info" type="submit" onClick={this.onLogOut}>
+        Log Out
+      </Button>
         <div className="container">
           <div className="row">
             {/* <div className="col-sm"> */}
