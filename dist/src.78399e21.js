@@ -35000,14 +35000,13 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
     _classCallCheck(this, MainView);
 
-    _this = _super.call(this); //Initializes the state to an empty object so we can destructure (access the state's attributs) it later
+    // call the superclass constructor so react can initialize it
+    _this = _super.call(this); // Initial state is set to null
 
     _this.state = {
-      movies: null,
-      selectedMovie: null,
+      movies: [],
       user: null
-    }; //Initializing the state in the conductor allows me to access the state later by writing: const { /*something*/ } = this.state;
-
+    };
     return _this;
   }
 
@@ -35016,68 +35015,51 @@ var MainView = /*#__PURE__*/function (_React$Component) {
     value: function getMovies(token) {
       var _this2 = this;
 
-      _axios.default.get("https://madison-myflix.herokuapp.com/movies", {
+      _axios.default.get('https://madison-myflix.herokuapp.com/movies', {
         headers: {
-          Authorization: "Bearer ${token}"
+          Authorization: "Bearer ".concat(token)
         }
       }).then(function (response) {
-        // Assign result to the state
+        // #1
         _this2.setState({
           movies: response.data
         });
       }).catch(function (error) {
         console.log(error);
       });
-    }
+    } // One of the "hooks" available in a React Component
+
   }, {
     key: "componentDidMount",
     value: function componentDidMount() {
-      var accessToken = localStorage.getItem("token");
+      var accessToken = localStorage.getItem('token');
 
       if (accessToken !== null) {
         this.setState({
-          user: localStorage.getItem("user")
+          user: localStorage.getItem('user')
         });
         this.getMovies(accessToken);
       }
     }
-    /*When a movie is clicked, this function updates the state of the 'selectedMovie' property to that selected movie*/
-
-  }, {
-    key: "onMovieClick",
-    value: function onMovieClick(movie) {
-      this.setState({
-        selectedMovie: movie
-      });
-    }
-    /*When a user successfully logs in, this function updates the 'user' property in state to that particular user*/
-
   }, {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
-      console.log(authData); //need both user and token. When a user logs in, the props onLoggedIn(data) is passed to LoginView and triggers onLoggedIn(authData) in MainView. This updates state with authData.
-
+      console.log(authData);
       this.setState({
         user: authData.user.Username
       });
-      localStorage.setItem("token", authData.token); //auth information received from handleSubmit method is stored in localStorage
-
-      localStorage.setItem("user", authData.user.Username);
+      localStorage.setItem('token', authData.token);
+      localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
     }
   }, {
-    key: "buttonClick",
-    value: function buttonClick() {
-      this.setState({
-        selectedMovie: null
-      });
-    } // allows users to log out by removing the token and the user from localStorage
-
-  }, {
-    key: "onLogOut",
-    value: function onLogOut() {
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
+    key: "logOut",
+    value: function logOut() {
+      localStorage.removeItem('token');
+      localStorage.removeItem('user');
+      console.log('logout successful');
+      alert('You have been successfully logged out');
+      window.open('/', '_self');
     }
   }, {
     key: "render",
@@ -35104,7 +35086,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "info",
         type: "submit",
-        onClick: this.onLogOut
+        onClick: this.logOut
       }, "Log Out"), _react.default.createElement("div", {
         className: "container"
       }, _react.default.createElement("div", {
