@@ -23,7 +23,7 @@ export class MainView extends React.Component {
   
   getMovies(token) {
     axios.get('https://madison-myflix.herokuapp.com/movies', {
-      headers: { Authorization: `Bearer ${token}`}
+      headers: { Authorization: `Bearer ${token}`}  // This type of notation is very important, not regular "" or ''
     })
     .then(response => {
       // #1
@@ -47,18 +47,33 @@ export class MainView extends React.Component {
     }
   }
 
+  // Updates the state of the 'selectedMovie' property to that of the selected movie when a movie is clicked
+  onMovieClick(movie) {
+    this.setState({
+      selectedMovie: movie,
+    });
+  }
 
+  // When a user successfullly logs in, this function updates the 'user' property in state to that particular user
   onLoggedIn(authData) {
     console.log(authData);
     this.setState({
       user: authData.user.Username
     });
 
-    localStorage.setItem('token', authData.token);
+    localStorage.setItem('token', authData.token);  // auth information received from handleSubmit method is stored in localStorage
     localStorage.setItem('user', authData.user.Username);
     this.getMovies(authData.token);
   }
 
+  // Allows users to navigate back to MainView after viewing a movie
+  buttonClick() {
+    this.setState({
+      selectedMovie: null,
+    });
+  }
+
+  // Allows users to log out by removing the user and token from localStorage
   logOut() {
     localStorage.removeItem('token');
     localStorage.removeItem('user');

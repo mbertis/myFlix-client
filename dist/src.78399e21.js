@@ -35017,7 +35017,8 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       _axios.default.get('https://madison-myflix.herokuapp.com/movies', {
         headers: {
-          Authorization: "Bearer ".concat(token)
+          Authorization: "Bearer ".concat(token) // This type of notation is very important, not regular "" or ''
+
         }
       }).then(function (response) {
         // #1
@@ -35040,7 +35041,16 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         });
         this.getMovies(accessToken);
       }
-    }
+    } // Updates the state of the 'selectedMovie' property to that of the selected movie when a movie is clicked
+
+  }, {
+    key: "onMovieClick",
+    value: function onMovieClick(movie) {
+      this.setState({
+        selectedMovie: movie
+      });
+    } // When a user successfullly logs in, this function updates the 'user' property in state to that particular user
+
   }, {
     key: "onLoggedIn",
     value: function onLoggedIn(authData) {
@@ -35048,10 +35058,20 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       this.setState({
         user: authData.user.Username
       });
-      localStorage.setItem('token', authData.token);
+      localStorage.setItem('token', authData.token); // auth information received from handleSubmit method is stored in localStorage
+
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
-    }
+    } // Allows users to navigate back to MainView after viewing a movie
+
+  }, {
+    key: "buttonClick",
+    value: function buttonClick() {
+      this.setState({
+        selectedMovie: null
+      });
+    } // Allows users to log out by removing the user and token from localStorage
+
   }, {
     key: "logOut",
     value: function logOut() {
@@ -35206,7 +35226,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53938" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59343" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
