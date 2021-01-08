@@ -8,7 +8,7 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: 150px;
-  margin-left: -15px;
+  margin-left: -150px;
 }
 .login-form {
   width: 30%;
@@ -43,6 +43,10 @@ body {
 
 .label {
   font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
 }
 .registration-form {
   width: 30%;

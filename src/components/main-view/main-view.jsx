@@ -5,6 +5,8 @@ import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "./main-view.scss";
 
+import { BrowserRouter as Router, Route} from "react-router-dom";
+
 import { LoginView } from "../login-view/login-view"; //LoginView needs to get user details from MainView
 import { MovieCard } from "../movie-card/movie-card";
 import { MovieView } from "../movie-view/movie-view";
@@ -48,11 +50,11 @@ export class MainView extends React.Component {
   }
 
   // Updates the state of the 'selectedMovie' property to that of the selected movie when a movie is clicked
-  onMovieClick(movie) {
-    this.setState({
-      selectedMovie: movie,
-    });
-  }
+  // onMovieClick(movie) {
+  //   this.setState({
+  //     selectedMovie: movie,
+  //   });
+  // }
 
   // When a user successfullly logs in, this function updates the 'user' property in state to that particular user
   onLoggedIn(authData) {
@@ -83,7 +85,7 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, selectedMovie, user } = this.state;
+    const { movies, user } = this.state;
 
     /*If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to LoginView*/
     if (!user)
@@ -92,34 +94,25 @@ export class MainView extends React.Component {
     //Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
-    return (
+    return (      
+      <div className="container">
+      <div className="row">        
+      <Router>
       <div className="main-view">
-        <Button variant="info" type="submit" onClick={this.logOut}>
-          Log Out
-        </Button>
-        <div className="container">
-          <div className="row">
-            {/* <div className="col-sm"> */}
-            {/* <Container fluid> */}
-            {/* If the state of 'selectedMovie' is not null, that selected movie will be returned. Otherwise, all movies will be returned */}
-            {selectedMovie ? (
-              <MovieView
-                movie={selectedMovie}
-                buttonProp={() => this.buttonClick()}
-              />
-            ) : (
-              movies.map((movie) => (
-                <MovieCard
-                  key={movie._id}
-                  movie={movie}
-                  onClick={(movie) => this.onMovieClick(movie)}
-                />
-              ))
-            )}
-            {/* </div> */}
-          </div>
+        <div className="header">
+      <Button variant="info" type="submit" onClick={this.logOut}>Log Out</Button>
+      </div>
+        <Route exact path="/" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
+        <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
+        <Route path="/directors/:name" render={({match}) => {
+          if (!movies) return <div className="main-view"/>;
+        return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director}/>}}/>
+        <Route path="/genres/:name" render={({match}) => {
+          if (!movies) return <div className="main-view"/>;
+        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}/>}}/>
         </div>
-        {/* </Container> */}
+      </Router>
+      </div>
       </div>
     );
   }

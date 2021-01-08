@@ -4,10 +4,12 @@ import Button from 'react-bootstrap/Button';
 import Card from 'react-bootstrap/Card';
 import "./movie-card.scss";
 
+import { Link } from "react-router-dom";
+
 export class MovieCard extends React.Component {     //Exporting <MovieCard/> here allows it to be imported into 'MainView'
   render() {
     //This is given to the <MovieCard/> component by 'MainView' as 'MainView' is connected to my db via /movies endpoint
-    const { movie, onClick } = this.props;
+    const { movie } = this.props;
 
     return (
       <Card className="movie-card" style={{width: '16rem'}}>
@@ -15,7 +17,9 @@ export class MovieCard extends React.Component {     //Exporting <MovieCard/> he
         <Card.Body>
           <Card.Title>{movie.Title}</Card.Title>
           <Card.Text>{movie.Description}</Card.Text>
-          <Button onClick={() => onClick(movie)} variant="info">Open</Button>
+          <Link to={`/movies/${movie._id}`}>
+          <Button variant="info">Open</Button>
+          </Link>
         </Card.Body>
       </Card>
     );
@@ -34,5 +38,4 @@ MovieCard.propTypes = {
       Name: PropTypes.string.isRequired,
     }),
   }).isRequired,
-  onClick: PropTypes.func.isRequired
 };

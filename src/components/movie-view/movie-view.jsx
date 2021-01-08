@@ -3,6 +3,8 @@ import PropTypes from 'prop-types';
 import Button from "react-bootstrap/button";
 import "./movie-view.scss";
 
+import { Link } from "react-router-dom";
+
 export class MovieView extends React.Component {
   constructor() {
     super();
@@ -16,7 +18,7 @@ export class MovieView extends React.Component {
   // }
 
   render() {
-    const { movie, buttonProp } = this.props;
+    const { movie } = this.props;
 
     if (!movie) return null;
 
@@ -42,7 +44,18 @@ export class MovieView extends React.Component {
           <span className="value">{movie.Director.Name}</span>
         </div>
 
-        <Button variant="secondary" onClick={buttonProp}>Back</Button>
+        <Link to={`/directors/${movie.Director.Name}`}>
+          <Button variant="info">Director</Button>
+        </Link>
+
+        <Link to={`/genres/${movie.Genre.Name}`}>
+          <Button variant="info">Genre</Button>
+        </Link>
+
+        <Link to={`/`}>
+          <Button variant="secondary">Back</Button>
+        </Link>
+
       </div>
     );
   }
@@ -60,5 +73,4 @@ MovieView.propTypes = {
       Name: PropTypes.string.isRequired,
     }),
   }).isRequired,
-  buttonProp: PropTypes.func.isRequired
 };
