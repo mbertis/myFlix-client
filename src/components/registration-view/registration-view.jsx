@@ -12,9 +12,22 @@ export function RegistrationView(props) {
   const handleSubmit = (e) => {
     // Prevents default of refreshing page on Submit/Register
     e.preventDefault();
-    console.log(username, password, email, birthday);
+    // console.log(username, password, email, birthday);
     // Send a request to the server for authentication then call props.onLoggedIn(username)
-    props.onLoggedIn(username); 
+    axios.post("https://madison-myflix.herokuapp.com/users", {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    })
+    .then(response => {
+      const data = response.data;
+      console.log(data);
+      window.open("/", "_self"); // the "_self" argument is necessary so that the page will open in the current tab
+    })
+    .catch(e => {
+      console.log("error registering the user")
+    });
   };
 
   return (

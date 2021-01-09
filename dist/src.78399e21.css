@@ -1,5 +1,6 @@
 .main-view {
   background-color: #dcdcdc;
+  width: 100%;
 }
 
 .row {
@@ -8,10 +9,10 @@
   -ms-flex-wrap: wrap;
   flex-wrap: wrap;
   margin-right: 150px;
-  margin-left: -150px;
+  margin-left: -15px;
 }
 .login-form {
-  width: 30%;
+  width: 50%;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid black;

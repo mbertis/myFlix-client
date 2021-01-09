@@ -68,13 +68,6 @@ export class MainView extends React.Component {
     this.getMovies(authData.token);
   }
 
-  // Allows users to navigate back to MainView after viewing a movie
-  buttonClick() {
-    this.setState({
-      selectedMovie: null,
-    });
-  }
-
   // Allows users to log out by removing the user and token from localStorage
   logOut() {
     localStorage.removeItem('token');
@@ -87,22 +80,19 @@ export class MainView extends React.Component {
   render() {
     const { movies, user } = this.state;
 
-    /*If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to LoginView*/
-    if (!user)
-      return <LoginView onLoggedIn={(user) => this.onLoggedIn(user)} />;
-
     //Before movies have been loaded
     if (!movies) return <div className="main-view" />;
 
-    return (      
+    return (
       <div className="container">
       <div className="row">        
       <Router>
       <div className="main-view">
-        <div className="header">
       <Button variant="info" type="submit" onClick={this.logOut}>Log Out</Button>
-      </div>
-        <Route exact path="/" render={() => movies.map(m => <MovieCard key={m._id} movie={m}/>)}/>
+        <Route exact path="/" render={() => {
+          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
+          return movies.map(m => <MovieCard key={m._id} movie={m}/>)}}/>
+        <Route path="/register" render={() => <RegistrationView />} />
         <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
         <Route path="/directors/:name" render={({match}) => {
           if (!movies) return <div className="main-view"/>;

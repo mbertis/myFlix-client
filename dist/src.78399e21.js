@@ -37957,10 +37957,21 @@ function RegistrationView(props) {
 
   var handleSubmit = function handleSubmit(e) {
     // Prevents default of refreshing page on Submit/Register
-    e.preventDefault();
-    console.log(username, password, email, birthday); // Send a request to the server for authentication then call props.onLoggedIn(username)
+    e.preventDefault(); // console.log(username, password, email, birthday);
+    // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    props.onLoggedIn(username);
+    axios.post("https://madison-myflix.herokuapp.com/users", {
+      Username: username,
+      Password: password,
+      Email: email,
+      Birthday: birthday
+    }).then(function (response) {
+      var data = response.data;
+      console.log(data);
+      window.open("/", "_self"); // the "_self" argument is necessary so that the page will open in the current tab
+    }).catch(function (e) {
+      console.log("error registering the user");
+    });
   };
 
   return _react.default.createElement(_form.default, {
@@ -38131,14 +38142,6 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       localStorage.setItem('user', authData.user.Username);
       this.getMovies(authData.token);
-    } // Allows users to navigate back to MainView after viewing a movie
-
-  }, {
-    key: "buttonClick",
-    value: function buttonClick() {
-      this.setState({
-        selectedMovie: null
-      });
     } // Allows users to log out by removing the user and token from localStorage
 
   }, {
@@ -38157,14 +38160,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
 
       var _this$state = this.state,
           movies = _this$state.movies,
-          user = _this$state.user;
-      /*If there is no user, the LoginView is rendered. If there is a user logged in, the user details are passed as a prop to LoginView*/
-
-      if (!user) return _react.default.createElement(_loginView.LoginView, {
-        onLoggedIn: function onLoggedIn(user) {
-          return _this3.onLoggedIn(user);
-        }
-      }); //Before movies have been loaded
+          user = _this$state.user; //Before movies have been loaded
 
       if (!movies) return _react.default.createElement("div", {
         className: "main-view"
@@ -38175,22 +38171,30 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "row"
       }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement("div", {
         className: "main-view"
-      }, _react.default.createElement("div", {
-        className: "header"
       }, _react.default.createElement(_Button.default, {
         variant: "info",
         type: "submit",
         onClick: this.logOut
-      }, "Log Out")), _react.default.createElement(_reactRouterDom.Route, {
+      }, "Log Out"), _react.default.createElement(_reactRouterDom.Route, {
         exact: true,
         path: "/",
         render: function render() {
+          if (!user) return _react.default.createElement(_loginView.LoginView, {
+            onLoggedIn: function onLoggedIn(user) {
+              return _this3.onLoggedIn(user);
+            }
+          });
           return movies.map(function (m) {
             return _react.default.createElement(_movieCard.MovieCard, {
               key: m._id,
               movie: m
             });
           });
+        }
+      }), _react.default.createElement(_reactRouterDom.Route, {
+        path: "/register",
+        render: function render() {
+          return _react.default.createElement(_registrationView.RegistrationView, null);
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
         path: "/movies/:movieId",
