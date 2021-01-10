@@ -64,6 +64,44 @@ body {
 body {
   background-color: #dcdcdc;
 }
+.director-view {
+  background-color: #f8f8ff;
+  border: 2px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  padding: 20px 12px;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
+}
+.genre-view {
+  background-color: #f8f8ff;
+  border: 2px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  padding: 20px 12px;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
+}
 .my-flix {
   color: #008b8b;
 }
