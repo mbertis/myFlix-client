@@ -1,11 +1,14 @@
 import React from "react";
 import axios from "axios";
 import Button from "react-bootstrap/Button";
+import Navbar from 'react-bootstrap/Navbar';
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import "./main-view.scss";
 
 import { BrowserRouter as Router, Route} from "react-router-dom";
+
+import { Link } from 'react-router-dom';
 
 import { LoginView } from "../login-view/login-view"; //LoginView needs to get user details from MainView
 import { MovieCard } from "../movie-card/movie-card";
@@ -89,19 +92,79 @@ export class MainView extends React.Component {
       <div className="container">
       <div className="row">        
       <Router>
+      <Navbar sticky="top" expand="lg" className="mb-2 navbar-styles">
+            <Navbar.Brand className="navbar-brand">
+              <Link to={`/`}>Victorville Film Archives</Link>
+            </Navbar.Brand>
+            <Navbar.Toggle
+              aria-controls="basic-navbar-nav"
+              className="bg-light"
+            />
+            <Navbar.Collapse
+              className="justify-content-end navbar-light"
+              id="basic-navbar-nav"
+            >
+              {!user ? (
+                <ul>
+                  <Link to={`/`}>
+                    <Button variant="link">login</Button>
+                  </Link>
+                  <Link to={`/register`}>
+                    <Button variant="link">Register</Button>
+                  </Link>
+                </ul>
+              ) : (
+                <ul>
+                  <Link to={`/`}>
+                    <Button variant="link" onClick={() => this.logOut()}>
+                      Log out
+                    </Button>
+                  </Link>
+                  <Link to={`/users/`}>
+                    <Button variant="link">Account</Button>
+                  </Link>
+                  <Link to={`/`}>
+                    <Button variant="link">Movies</Button>
+                  </Link>
+                </ul>
+              )}
+            </Navbar.Collapse>
+          </Navbar>
       <div className="main-view">
-      <Button variant="info" type="submit" onClick={this.logOut}>Log Out</Button>
         <Route exact path="/" render={() => {
           if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
           return movies.map(m => <MovieCard key={m._id} movie={m}/>)}}/>
         <Route path="/users" render={() => <RegistrationView />} />
         <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
-        <Route path="/directors/:name" render={({match}) => {
+        {/* <Route path="/directors/:name" render={({match}) => {
           if (!movies) return <div className="main-view"/>;
         return <DirectorView director={movies.find(m => m.Director.Name === match.params.name).Director}/>}}/>
         <Route path="/genres/:name" render={({match}) => {
           if (!movies) return <div className="main-view"/>;
-        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}/>}}/>
+        return <GenreView genre={movies.find(m => m.Genre.Name === match.params.name).Genre}/>}}/> */}
+                   <Route
+            path="/directors/:name"
+            render={({ match }) => {
+              if (!movies) return <div className="main-view" />;
+              return (
+                <DirectorView
+                  director={
+                    movies.find((m) => m.Director.Name === match.params.name).Director
+                  }
+                />
+              );
+            }}
+          />
+          <Route
+            path="/genres/:name"
+            render={({ match }) => (
+              <GenreView
+                genre={movies.find((m) => m.Genre.Name === match.params.name)}
+                movies={movies}
+                // addToFavourites={() => addToFavourites(movie)}
+              />
+            )}
+          />
         </div>
       </Router>
       </div>

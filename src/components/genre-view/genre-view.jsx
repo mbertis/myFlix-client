@@ -13,26 +13,26 @@ export class GenreView extends React.Component {
   }
 
   render() {
-    const { movie } = this.props;
+    const { genre } = this.props;
 
-    if (!movie) return null;
+    if (!genre) return null;
 
     return (
       <div className="genre-view">
         <div className="genre-name">
           <span className="label">Name: </span>
-          <span className="value">{movie.Genre.Name}</span>
+          <span className="value">{genre.Genre.Name}</span>
         </div>
         <div className="genre-description">
           <span className="label">Description: </span>
-          <span className="value">{movie.Genre.Description}</span>
+          <span className="value">{genre.Genre.Description}</span>
         </div>
 
-        <Link to={`/directors/${movie.Director.Name}`}>
+        <Link to={`/directors/${genre.Director.Name}`}>
           <Button variant="info">Director</Button>
         </Link>
 
-        <Link to={`/genres/${movie.Genre.Name}`}>
+        <Link to={`/genres/${genre.Genre.Name}`}>
           <Button variant="info">Genre</Button>
         </Link>
 
