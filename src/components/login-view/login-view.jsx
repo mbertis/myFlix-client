@@ -4,6 +4,8 @@ import Button from "react-bootstrap/button";
 import axios from "axios";
 import "./login-view.scss";
 
+import { Link } from "react-router-dom";
+
 export function LoginView(props) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
@@ -51,6 +53,9 @@ export function LoginView(props) {
       <Button variant="info" type="submit" onClick={handleSubmit}>
         Sign In
       </Button>
+      <Link to={`/users`}>
+          <Button variant="secondary">Create New Account</Button>
+      </Link>
     </Form>
   );
 }

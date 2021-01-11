@@ -37410,6 +37410,8 @@ var _axios = _interopRequireDefault(require("axios"));
 
 require("./login-view.scss");
 
+var _reactRouterDom = require("react-router-dom");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _getRequireWildcardCache() { if (typeof WeakMap !== "function") return null; var cache = new WeakMap(); _getRequireWildcardCache = function () { return cache; }; return cache; }
@@ -37479,9 +37481,13 @@ function LoginView(props) {
     variant: "info",
     type: "submit",
     onClick: handleSubmit
-  }, "Sign In"));
+  }, "Sign In"), _react.default.createElement(_reactRouterDom.Link, {
+    to: "/users"
+  }, _react.default.createElement(_button.default, {
+    variant: "secondary"
+  }, "Create New Account")));
 }
-},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"../node_modules/react-bootstrap/esm/divWithClassName.js":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -37914,6 +37920,8 @@ var _form = _interopRequireDefault(require("react-bootstrap/form"));
 
 var _button = _interopRequireDefault(require("react-bootstrap/button"));
 
+var _axios = _interopRequireDefault(require("axios"));
+
 require("./registration-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -37960,7 +37968,7 @@ function RegistrationView(props) {
     e.preventDefault(); // console.log(username, password, email, birthday);
     // Send a request to the server for authentication then call props.onLoggedIn(username)
 
-    axios.post("https://madison-myflix.herokuapp.com/users", {
+    _axios.default.post("https://madison-myflix.herokuapp.com/users", {
       Username: username,
       Password: password,
       Email: email,
@@ -37977,7 +37985,7 @@ function RegistrationView(props) {
   return _react.default.createElement(_form.default, {
     className: "registration-form"
   }, _react.default.createElement("h3", null, "Create an Account for myFlix"), _react.default.createElement(_form.default.Group, {
-    controlId: "formBasicUsername"
+    controlid: "formBasicUsername"
   }, _react.default.createElement(_form.default.Label, null, "Username:"), _react.default.createElement(_form.default.Control, {
     type: "text",
     value: username,
@@ -37986,7 +37994,7 @@ function RegistrationView(props) {
       return setUsername(e.target.value);
     }
   })), _react.default.createElement(_form.default.Group, {
-    controlId: "formBasicPassword"
+    controlid: "formBasicPassword"
   }, _react.default.createElement(_form.default.Label, null, "Password:"), _react.default.createElement(_form.default.Control, {
     type: "password",
     value: password,
@@ -37995,7 +38003,7 @@ function RegistrationView(props) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_form.default.Group, {
-    controllId: "formBasicEmail"
+    controllid: "formBasicEmail"
   }, _react.default.createElement(_form.default.Label, null, "Email Adress:"), _react.default.createElement(_form.default.Control, {
     type: "email",
     value: email,
@@ -38004,7 +38012,7 @@ function RegistrationView(props) {
       return setEmail(e.target.value);
     }
   })), _react.default.createElement(_form.default.Group, {
-    controlId: "formBasicBirthday"
+    controlid: "formBasicBirthday"
   }, _react.default.createElement(_form.default.Label, null, "Birthday:"), _react.default.createElement(_form.default.Control, {
     type: "string",
     value: birthday,
@@ -38018,7 +38026,7 @@ function RegistrationView(props) {
     onClick: handleSubmit
   }, "Create Account"));
 }
-},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
+},{"react":"../../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../../node_modules/axios/index.js","./registration-view.scss":"components/registration-view/registration-view.scss"}],"components/director-view/director-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -38439,7 +38447,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/register",
+        path: "/users",
         render: function render() {
           return _react.default.createElement(_registrationView.RegistrationView, null);
         }
@@ -38581,7 +38589,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56155" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52079" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

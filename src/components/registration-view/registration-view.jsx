@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Form from "react-bootstrap/form";
 import Button from "react-bootstrap/button";
+import axios from "axios";
 import "./registration-view.scss";
 
 export function RegistrationView(props) {
@@ -33,7 +34,7 @@ export function RegistrationView(props) {
   return (
     <Form className="registration-form">
     <h3>Create an Account for myFlix</h3>
-    <Form.Group controlId="formBasicUsername">
+    <Form.Group controlid="formBasicUsername">
       <Form.Label>Username:</Form.Label>
       <Form.Control
         type="text"
@@ -43,7 +44,7 @@ export function RegistrationView(props) {
       />
     </Form.Group>
 
-    <Form.Group controlId="formBasicPassword">
+    <Form.Group controlid="formBasicPassword">
       <Form.Label>Password:</Form.Label>
       <Form.Control
         type="password"
@@ -53,7 +54,7 @@ export function RegistrationView(props) {
       />
     </Form.Group>
 
-    <Form.Group controllId="formBasicEmail">
+    <Form.Group controllid="formBasicEmail">
       <Form.Label>Email Adress:</Form.Label>
       <Form.Control
       type="email"
@@ -62,7 +63,7 @@ export function RegistrationView(props) {
       onChange={e => setEmail(e.target.value)}/>
     </Form.Group>
 
-    <Form.Group controlId="formBasicBirthday">
+    <Form.Group controlid="formBasicBirthday">
       <Form.Label>Birthday:</Form.Label>
       <Form.Control
       type="string"
