@@ -40165,7 +40165,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_button.default, {
         variant: "secondary"
-      }, "Home")));
+      }, "Back to Movies")));
     }
   }]);
 
@@ -40255,18 +40255,10 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       }, "Description: "), _react.default.createElement("span", {
         className: "value"
       }, genre.Genre.Description)), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/directors/".concat(genre.Director.Name)
-      }, _react.default.createElement(_button.default, {
-        variant: "info"
-      }, "Director")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/genres/".concat(genre.Genre.Name)
-      }, _react.default.createElement(_button.default, {
-        variant: "info"
-      }, "Genre")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_button.default, {
         variant: "secondary"
-      }, "Back")));
+      }, "Back to Movies")));
     }
   }]);
 
@@ -40274,20 +40266,6 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
-GenreView.propTypes = {
-  movie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired,
-    Genre: _propTypes.default.shape({
-      Name: _propTypes.default.string.isRequired,
-      Description: _propTypes.default.string.isRequired
-    }),
-    Director: _propTypes.default.shape({
-      Name: _propTypes.default.string.isRequired
-    })
-  }).isRequired
-};
 },{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./genre-view.scss":"components/genre-view/genre-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/main-view/main-view.jsx":[function(require,module,exports) {
 "use strict";
 

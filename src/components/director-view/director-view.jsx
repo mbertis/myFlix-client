@@ -39,7 +39,7 @@ export class DirectorView extends React.Component {
         </div>
 
         <Link to={`/`}>
-          <Button variant="secondary">Home</Button>
+          <Button variant="secondary">Back to Movies</Button>
         </Link>
 
       </div>
