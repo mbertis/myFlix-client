@@ -40133,8 +40133,8 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
   _createClass(DirectorView, [{
     key: "render",
     value: function render() {
-      var movie = this.props.movie;
-      if (!movie) return null;
+      var director = this.props.director;
+      if (!director) return null;
       return _react.default.createElement("div", {
         className: "director-view"
       }, _react.default.createElement("div", {
@@ -40143,37 +40143,29 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Name: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Name)), _react.default.createElement("div", {
-        className: "director-bio"
+      }, director.Name)), _react.default.createElement("div", {
+        className: "d-bio"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Bio: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Bio)), _react.default.createElement("div", {
+      }, director.Bio)), _react.default.createElement("div", {
         className: "director-birth"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Birth Year: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Birth)), _react.default.createElement("div", {
+      }, director.Birth)), _react.default.createElement("div", {
         className: "director-death"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Death Year: "), _react.default.createElement("span", {
         className: "value"
-      }, movie.Director.Death)), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/directors/".concat(movie.Director.Name)
-      }, _react.default.createElement(_button.default, {
-        variant: "info"
-      }, "Director")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_button.default, {
-        variant: "info"
-      }, "Genre")), _react.default.createElement(_reactRouterDom.Link, {
+      }, director.Death)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_button.default, {
         variant: "secondary"
-      }, "Back")));
+      }, "Home")));
     }
   }]);
 
@@ -40181,48 +40173,6 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.DirectorView = DirectorView;
-DirectorView.propTypes = {
-  movie: _propTypes.default.shape({
-    Title: _propTypes.default.string.isRequired,
-    Description: _propTypes.default.string.isRequired,
-    ImagePath: _propTypes.default.string.isRequired,
-    Genre: _propTypes.default.shape({
-      Name: _propTypes.default.string.isRequired
-    }),
-    Director: _propTypes.default.shape({
-      Name: _propTypes.default.string.isRequired,
-      Birth: _propTypes.default.string.isRequired,
-      Death: _propTypes.default.string.isRequired
-    })
-  }).isRequired
-}; // import React from "react";
-// import PropTypes from "prop-types";
-// import Card from "react-bootstrap/Card";
-// import Button from "react-bootstrap/Button";
-// import "./director-view.scss";
-// import { Link } from "react-router-dom";
-// export class DirectorView extends React.Component {
-//   constructor() {
-//     super();
-//     this.state = {};
-//   }
-//   render() {
-//     const { director } = this.props;
-//     if (!director) return null;
-//     return (
-//       <Card style={{ width: "40rem" }}>
-//         <Card.Body>
-//           <Card.Title>Director: {director.Name}</Card.Title>
-//           <Card.Text>Description: {director.Bio}</Card.Text>
-//           <Card.Text>Birth: {director.Birth}</Card.Text>
-//           <Link to={`/`}>
-//             <Button variant="primary">Back</Button>
-//           </Link>
-//         </Card.Body>
-//       </Card>
-//     );
-//   }
-// }
 },{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./director-view.scss":"components/director-view/director-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/genre-view/genre-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
