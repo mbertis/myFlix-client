@@ -11,6 +11,19 @@
   margin-right: 150px;
   margin-left: -15px;
 }
+
+.navbar {
+  background-color: #4e4e45;
+}
+
+.navbar-link {
+  color: white;
+  padding-top: 18px;
+}
+
+.navbar-link:hover {
+  color: #bdbb98;
+}
 .login-form {
   width: 50%;
   padding: 12px 20px;

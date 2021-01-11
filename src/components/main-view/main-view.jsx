@@ -94,7 +94,7 @@ export class MainView extends React.Component {
       <Router>
       <Navbar sticky="top" expand="lg" className="mb-2 navbar-styles">
             <Navbar.Brand className="navbar-brand">
-              <Link to={`/`}>Victorville Film Archives</Link>
+              <Link to={`/`}>myFlix</Link>
             </Navbar.Brand>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
@@ -107,7 +107,7 @@ export class MainView extends React.Component {
               {!user ? (
                 <ul>
                   <Link to={`/`}>
-                    <Button variant="link">login</Button>
+                    <Button variant="link">Login</Button>
                   </Link>
                   <Link to={`/register`}>
                     <Button variant="link">Register</Button>
@@ -134,7 +134,7 @@ export class MainView extends React.Component {
         <Route exact path="/" render={() => {
           if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
           return movies.map(m => <MovieCard key={m._id} movie={m}/>)}}/>
-        <Route path="/users" render={() => <RegistrationView />} />
+        <Route path="/register" render={() => <RegistrationView />} />
         <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
         {/* <Route path="/directors/:name" render={({match}) => {
           if (!movies) return <div className="main-view"/>;

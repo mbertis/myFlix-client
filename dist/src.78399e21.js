@@ -39531,7 +39531,7 @@ function LoginView(props) {
     type: "submit",
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement(_reactRouterDom.Link, {
-    to: "/users"
+    to: "/register"
   }, _react.default.createElement(_button.default, {
     variant: "secondary"
   }, "Create New Account")));
@@ -40504,7 +40504,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         className: "navbar-brand"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, "Victorville Film Archives")), _react.default.createElement(_Navbar.default.Toggle, {
+      }, "myFlix")), _react.default.createElement(_Navbar.default.Toggle, {
         "aria-controls": "basic-navbar-nav",
         className: "bg-light"
       }), _react.default.createElement(_Navbar.default.Collapse, {
@@ -40514,7 +40514,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_Button.default, {
         variant: "link"
-      }, "login")), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Login")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/register"
       }, _react.default.createElement(_Button.default, {
         variant: "link"
@@ -40552,7 +40552,7 @@ var MainView = /*#__PURE__*/function (_React$Component) {
           });
         }
       }), _react.default.createElement(_reactRouterDom.Route, {
-        path: "/users",
+        path: "/register",
         render: function render() {
           return _react.default.createElement(_registrationView.RegistrationView, null);
         }
