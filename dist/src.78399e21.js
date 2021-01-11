@@ -39834,15 +39834,11 @@ var _react = _interopRequireDefault(require("react"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _Card = _interopRequireDefault(require("react-bootstrap/Card"));
-
-var _Button = _interopRequireDefault(require("react-bootstrap/Button"));
+var _button = _interopRequireDefault(require("react-bootstrap/button"));
 
 require("./movie-view.scss");
 
 var _reactRouterDom = require("react-router-dom");
-
-var _axios = _interopRequireDefault(require("axios"));
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -39881,49 +39877,59 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
     _this = _super.call(this);
     _this.state = {};
     return _this;
-  }
+  } // This function causes the back button to reload the MainView page
+  // refreshPage() {
+  //   window.location.reload(false);
+  // }
+
 
   _createClass(MovieView, [{
-    key: "addFavorite",
-    value: function addFavorite(movie) {
-      var token = localStorage.getItem("token");
-
-      var url = "https://madison-myflix.herokuapp.com/users/" + localStorage.getItem("user") + "/movies/" + movie._id;
-
-      console.log(token);
-
-      _axios.default.post(url, "", {
-        headers: {
-          Authorization: "Bearer ".concat(token)
-        }
-      }).then(function (response) {
-        console.log(response);
-        window.open("/client", "_self");
-      });
-    }
-  }, {
     key: "render",
     value: function render() {
-      var _this$props = this.props,
-          movie = _this$props.movie,
-          onBackClick = _this$props.onBackClick;
+      var movie = this.props.movie;
       if (!movie) return null;
-      return _react.default.createElement(_Card.default, {
-        style: {
-          width: "40rem"
-        }
-      }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_Card.default.Img, {
-        variant: "top",
+      return _react.default.createElement("div", {
+        className: "movie-view"
+      }, _react.default.createElement("img", {
+        className: "movie-poster",
         src: movie.ImagePath
-      }), _react.default.createElement(_Card.default.Title, null, movie.Title), _react.default.createElement(_Card.default.Text, null, movie.Description), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_Card.default.Text, null, "Genre: ", movie.Genre.Name)), _react.default.createElement(_reactRouterDom.Link, {
+      }), _react.default.createElement("div", {
+        className: "movie-title"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Title: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Title)), _react.default.createElement("div", {
+        className: "movie-description"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Description: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Description)), _react.default.createElement("div", {
+        className: "movie-genre"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Genre: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Genre.Name)), _react.default.createElement("div", {
+        className: "movie-director"
+      }, _react.default.createElement("span", {
+        className: "label"
+      }, "Director: "), _react.default.createElement("span", {
+        className: "value"
+      }, movie.Director.Name)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/directors/".concat(movie.Director.Name)
-      }, _react.default.createElement(_Card.default.Text, null, "Director: ", movie.Director.Name)), _react.default.createElement(_reactRouterDom.Link, {
+      }, _react.default.createElement(_button.default, {
+        variant: "info"
+      }, "Director")), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/genres/".concat(movie.Genre.Name)
+      }, _react.default.createElement(_button.default, {
+        variant: "info"
+      }, "Genre")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_Button.default, {
-        variant: "primary"
-      }, "Home"))));
+      }, _react.default.createElement(_button.default, {
+        variant: "secondary"
+      }, "Back")));
     }
   }]);
 
@@ -39935,15 +39941,82 @@ MovieView.propTypes = {
   movie: _propTypes.default.shape({
     Title: _propTypes.default.string.isRequired,
     Description: _propTypes.default.string.isRequired,
+    ImagePath: _propTypes.default.string.isRequired,
     Genre: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired
-    }).isRequired,
+    }),
     Director: _propTypes.default.shape({
       Name: _propTypes.default.string.isRequired
-    }).isRequired
+    })
   }).isRequired
-};
-},{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","./movie-view.scss":"components/movie-view/movie-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","axios":"../../node_modules/axios/index.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+}; // import React from "react";
+// import PropTypes from "prop-types";
+// import Card from "react-bootstrap/Card";
+// import Button from "react-bootstrap/Button";
+// import "./movie-view.scss";
+// import { Link } from "react-router-dom";
+// import axios from "axios";
+// export class MovieView extends React.Component {
+//   constructor() {
+//     super();
+//     this.state = {};
+//   }
+//   addFavorite(movie) {
+//     let token = localStorage.getItem("token");
+//     let url =
+//       "https://madison-myflix.herokuapp.com/users/" +
+//       localStorage.getItem("user") +
+//       "/movies/" +
+//       movie._id;
+//     console.log(token);
+//     axios
+//       .post(url, "", {
+//         headers: { Authorization: `Bearer ${token}` },
+//       })
+//       .then((response) => {
+//         console.log(response);
+//         window.open("/client", "_self");
+//       });
+//   }
+//   render() {
+//     const { movie, onBackClick } = this.props;
+//     if (!movie) return null;
+//     return (
+//       <Card style={{ width: "40rem" }}>
+//         <Card.Body>
+//           <Card.Img variant="top" src={movie.ImagePath} />
+//           <Card.Title>{movie.Title}</Card.Title>
+//           <Card.Text>{movie.Description}</Card.Text>
+//           <Link to={`/genres/${movie.Genre.Name}`}>
+//             <Card.Text>Genre: {movie.Genre.Name}</Card.Text>
+//           </Link>
+//           <Link to={`/directors/${movie.Director.Name}`}>
+//             <Card.Text>Director: {movie.Director.Name}</Card.Text>
+//           </Link>
+//           <Link to={`/`}>
+//             <Button variant="primary">Home</Button>
+//           </Link>
+//           {/* <Button variant="link" onClick={() => this.addFavorite(movie)}>
+//             Add Favorite
+//           </Button> */}
+//         </Card.Body>
+//       </Card>
+//     );
+//   }
+// }
+// MovieView.propTypes = {
+//   movie: PropTypes.shape({
+//     Title: PropTypes.string.isRequired,
+//     Description: PropTypes.string.isRequired,
+//     Genre: PropTypes.shape({
+//       Name: PropTypes.string.isRequired,
+//     }).isRequired,
+//     Director: PropTypes.shape({
+//       Name: PropTypes.string.isRequired,
+//     }).isRequired,
+//   }).isRequired,
+// };
+},{"react":"../../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./movie-view.scss":"components/movie-view/movie-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
