@@ -98,10 +98,10 @@ export class MainView extends React.Component {
             </Navbar.Brand>
             <Navbar.Toggle
               aria-controls="basic-navbar-nav"
-              className="bg-light"
+              className="bg-dark"
             />
             <Navbar.Collapse
-              className="justify-content-end navbar-light"
+              className="justify-content-end navbar-dark"
               id="basic-navbar-nav"
             >
               {!user ? (

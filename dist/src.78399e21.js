@@ -40506,9 +40506,9 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, "myFlix")), _react.default.createElement(_Navbar.default.Toggle, {
         "aria-controls": "basic-navbar-nav",
-        className: "bg-light"
+        className: "bg-dark"
       }), _react.default.createElement(_Navbar.default.Collapse, {
-        className: "justify-content-end navbar-light",
+        className: "justify-content-end navbar-dark",
         id: "basic-navbar-nav"
       }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
@@ -40693,7 +40693,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52079" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "60411" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
