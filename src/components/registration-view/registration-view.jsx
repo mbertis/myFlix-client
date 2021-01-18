@@ -111,7 +111,7 @@ export function RegistrationView() {
       })
       .catch((e) => {
         console.log(e.response);
-        alert("Error processing request");
+        alert(e.response.data.errors[0].msg);
       });
   };
 

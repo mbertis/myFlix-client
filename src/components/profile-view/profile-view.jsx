@@ -81,7 +81,7 @@ export class ProfileView extends React.Component {
       .then((response) => console.log(response));
 
     localStorage.removeItem("token");
-    // localStorage.removeItem("user");
+    localStorage.removeItem("user");
     window.open("/", "_self");
   }
 

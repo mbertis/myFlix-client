@@ -17,6 +17,8 @@ import { RegistrationView } from "../registration-view/registration-view";
 import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
+import { UpdateView } from "../update-profile/update-profile";
+import { MoviesList } from "../movies-list/movies-list";
 
 export class MainView extends React.Component {
   constructor() {
@@ -133,8 +135,16 @@ export class MainView extends React.Component {
           </Navbar>
       <div className="main-view">
         <Route exact path="/" render={() => {
-          if (!user) return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
-          return movies.map(m => <MovieCard key={m._id} movie={m}/>)}}/>
+          if (!user) 
+          return <LoginView onLoggedIn={user => this.onLoggedIn(user)}/>;
+          return <MoviesList movies={movies}/>;}}
+          />
+          <Route
+            path="/update/:userId"
+            render={() => {
+              return <UpdateView />;
+            }}
+          />
         <Route path="/register" render={() => <RegistrationView />} />
         <Route path="/movies/:movieId" render={({match}) => <MovieView movie={movies.find(m => m._id === match.params.movieId)}/>}/>
         <Route
@@ -158,6 +168,7 @@ export class MainView extends React.Component {
                   director={
                     movies.find((m) => m.Director.Name === match.params.name).Director
                   }
+                  movies ={movies}
                 />
               );
             }}
