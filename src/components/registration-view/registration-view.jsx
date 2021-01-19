@@ -119,12 +119,13 @@ export function RegistrationView() {
     <Container>
       <br />
       <br />
-      <Form style={{ width: "32rem", margin: "auto", textAlign: "center" }}>
+      <Form className="registration-form">
+        <h3>Create An Account</h3>
         <Form.Group controlId="formBasicUsername">
           <Form.Label>Username</Form.Label>
           <Form.Control
             type="text"
-            placeholder="Enter username"
+            placeholder="Enter Username"
             value={username}
             onChange={(e) => setUsername(e.target.value)}
           />
@@ -134,18 +135,18 @@ export function RegistrationView() {
           <Form.Label>Password</Form.Label>
           <Form.Control
             type="password"
-            placeholder="Password"
+            placeholder="Enter Password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
         </Form.Group>
 
         <Form.Group controlId="formBasicEmail">
-          <Form.Label>Email address</Form.Label>
+          <Form.Label>Email Address</Form.Label>
           <Form.Control
             type="email"
             value={email}
-            placeholder="Enter email"
+            placeholder="example@website.com"
             onChange={(e) => setEmail(e.target.value)}
           />
         </Form.Group>
@@ -160,11 +161,11 @@ export function RegistrationView() {
           />
         </Form.Group>
 
-        <Button variant="dark" type="submit" onClick={handleSubmit}>
+        <Button variant="info" type="submit" onClick={handleSubmit}>
           Submit
         </Button>
         <Link to={`/`}>
-          <Button variant="dark link" type="submit">
+          <Button variant="secondary" type="submit">
             Cancel
           </Button>
         </Link>

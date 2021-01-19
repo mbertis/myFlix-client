@@ -67,14 +67,12 @@ body {
   margin: 10px;
 }
 .registration-form {
-  width: 30%;
+  width: 50%;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid black;
   display: inline-block;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-top: 10%;
+  margin-top: 50px;
   background-color: #f8f8ff;
 }
 

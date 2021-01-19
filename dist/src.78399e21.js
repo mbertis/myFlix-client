@@ -51316,16 +51316,12 @@ function RegistrationView() {
   };
 
   return _react.default.createElement(_reactBootstrap.Container, null, _react.default.createElement("br", null), _react.default.createElement("br", null), _react.default.createElement(_reactBootstrap.Form, {
-    style: {
-      width: "32rem",
-      margin: "auto",
-      textAlign: "center"
-    }
-  }, _react.default.createElement(_reactBootstrap.Form.Group, {
+    className: "registration-form"
+  }, _react.default.createElement("h3", null, "Create An Account"), _react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicUsername"
   }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Username"), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "text",
-    placeholder: "Enter username",
+    placeholder: "Enter Username",
     value: username,
     onChange: function onChange(e) {
       return setUsername(e.target.value);
@@ -51334,17 +51330,17 @@ function RegistrationView() {
     controlId: "formBasicPassword"
   }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Password"), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "password",
-    placeholder: "Password",
+    placeholder: "Enter Password",
     value: password,
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
   })), _react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicEmail"
-  }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Email address"), _react.default.createElement(_reactBootstrap.Form.Control, {
+  }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Email Address"), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "email",
     value: email,
-    placeholder: "Enter email",
+    placeholder: "example@website.com",
     onChange: function onChange(e) {
       return setEmail(e.target.value);
     }
@@ -51358,13 +51354,13 @@ function RegistrationView() {
       return setBirthday(e.target.value);
     }
   })), _react.default.createElement(_reactBootstrap.Button, {
-    variant: "dark",
+    variant: "info",
     type: "submit",
     onClick: handleSubmit
   }, "Submit"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/"
   }, _react.default.createElement(_reactBootstrap.Button, {
-    variant: "dark link",
+    variant: "secondary",
     type: "submit"
   }, "Cancel"))));
 }
