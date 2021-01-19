@@ -36,7 +36,7 @@ export class GenreView extends React.Component {
 
         <Container>
         <h4 className="mt-4">Some {genre.Genre.Name} movies</h4>
-        <div className="d-flex row mt-3 ml-2">
+        <div className="d-flex row">
           {movies.map((movie) => {
             if (movie.Genre.Name === genre.Genre.Name) {
               return (
@@ -60,8 +60,8 @@ export class GenreView extends React.Component {
                     <Card.Footer className="bg-white border-top-0">
                       <Link to={`/movies/${movie._id}`}>
                         <Button
-                          variant="link"
-                          className="read-more-link pl-0"
+                          variant="info"
+                          className="read-more-link"
                         >
                           Read more
                         </Button>

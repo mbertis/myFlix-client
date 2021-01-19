@@ -39869,7 +39869,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_button.default, {
         variant: "info"
       }, "Genre")), _react.default.createElement(_button.default, {
-        variant: "link",
+        variant: "info",
         onClick: function onClick() {
           return _this2.addFavorite(movie);
         }
@@ -39877,7 +39877,7 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         to: "/"
       }, _react.default.createElement(_button.default, {
         variant: "secondary"
-      }, "Back")));
+      }, "Back to Movies")));
     }
   }]);
 
@@ -51474,7 +51474,7 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
       }, "Back to Movies")), _react.default.createElement(_Container.default, null, _react.default.createElement("h4", {
         className: "mt-4"
       }, "Some ", director.Name, " movies"), _react.default.createElement("div", {
-        className: "d-flex row mt-3 ml-1"
+        className: "d-flex row"
       }, movies.map(function (movie) {
         if (movie.Director.Name === director.Name) {
           return _react.default.createElement("div", {
@@ -51495,8 +51495,8 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
           }, _react.default.createElement(_reactRouterDom.Link, {
             to: "/movies/".concat(movie._id)
           }, _react.default.createElement(_button.default, {
-            variant: "link",
-            className: "read-more-link pl-0"
+            variant: "info",
+            className: "read-more-link"
           }, "Read more")))));
         }
       }))));
@@ -51601,7 +51601,7 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
       }, "Back to Movies")), _react.default.createElement(_Container.default, null, _react.default.createElement("h4", {
         className: "mt-4"
       }, "Some ", genre.Genre.Name, " movies"), _react.default.createElement("div", {
-        className: "d-flex row mt-3 ml-2"
+        className: "d-flex row"
       }, movies.map(function (movie) {
         if (movie.Genre.Name === genre.Genre.Name) {
           return _react.default.createElement("div", {
@@ -51622,8 +51622,8 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
           }, _react.default.createElement(_reactRouterDom.Link, {
             to: "/movies/".concat(movie._id)
           }, _react.default.createElement(_button.default, {
-            variant: "link",
-            className: "read-more-link pl-0"
+            variant: "info",
+            className: "read-more-link"
           }, "Read more")))));
         }
       }))));
@@ -51634,7 +51634,12 @@ var GenreView = /*#__PURE__*/function (_React$Component) {
 }(_react.default.Component);
 
 exports.GenreView = GenreView;
-},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./genre-view.scss":"components/genre-view/genre-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","./genre-view.scss":"components/genre-view/genre-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/profile-view/profile-view.scss":[function(require,module,exports) {
+var reloadCSS = require('_css_loader');
+
+module.hot.dispose(reloadCSS);
+module.hot.accept(reloadCSS);
+},{"_css_loader":"../../../../../../../../../../home/mbertis/.nvm/versions/node/v14.15.0/lib/node_modules/parcel-bundler/src/builtins/css-loader.js"}],"components/profile-view/profile-view.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -51661,6 +51666,8 @@ var _Col = _interopRequireDefault(require("react-bootstrap/Col"));
 var _Row = _interopRequireDefault(require("react-bootstrap/Row"));
 
 var _Form = _interopRequireDefault(require("react-bootstrap/Form"));
+
+require("./profile-view.scss");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -51816,7 +51823,7 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("h3", null, "Date of Birth:"), _react.default.createElement(_Form.default.Label, null, this.state.dob)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/update/".concat(this.state.username)
       }, _react.default.createElement(_Button.default, {
-        variant: "primary",
+        variant: "info",
         type: "link"
       }, "Edit")), _react.default.createElement(_Button.default, {
         variant: "danger",
@@ -51826,9 +51833,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, "Delete User"), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_Button.default, {
-        variant: "light",
+        variant: "secondary",
         type: "submit"
-      }, "Back")))), _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      }, "Back to Movies")))), _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
         className: "favoriteMovies",
         style: {
           float: "right",
@@ -51838,9 +51845,12 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("h1", null, "Favorite Movies"), favoriteMovieList.map(function (movie) {
         return _react.default.createElement("div", {
           key: movie._id
-        }, _react.default.createElement(_Card.default, null, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_reactRouterDom.Link, {
+        }, _react.default.createElement(_Card.default, {
+          bg: "secondary"
+        }, _react.default.createElement(_Card.default.Body, null, _react.default.createElement(_reactRouterDom.Link, {
           to: "/movies/".concat(movie._id)
         }, _react.default.createElement(_Card.default.Title, null, movie.Title)))), _react.default.createElement(_Button.default, {
+          variant: "info",
           onClick: function onClick() {
             return _this4.removeFavorite(movie);
           }
@@ -51856,7 +51866,7 @@ exports.ProfileView = ProfileView;
 ProfileView.propTypes = {
   movies: _propTypes.default.array.isRequired
 };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js"}],"components/update-profile/update-profile.jsx":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/Button":"../node_modules/react-bootstrap/esm/Button.js","react-bootstrap/Container":"../node_modules/react-bootstrap/esm/Container.js","react-bootstrap/Card":"../node_modules/react-bootstrap/esm/Card.js","react-bootstrap/Col":"../node_modules/react-bootstrap/esm/Col.js","react-bootstrap/Row":"../node_modules/react-bootstrap/esm/Row.js","react-bootstrap/Form":"../node_modules/react-bootstrap/esm/Form.js","./profile-view.scss":"components/profile-view/profile-view.scss"}],"components/update-profile/update-profile.jsx":[function(require,module,exports) {
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

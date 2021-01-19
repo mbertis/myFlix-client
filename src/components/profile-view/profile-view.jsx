@@ -8,6 +8,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import Form from "react-bootstrap/Form";
+import "./profile-view.scss";
 
 export class ProfileView extends React.Component {
   constructor(props) {
@@ -115,7 +116,7 @@ export class ProfileView extends React.Component {
                 </Form.Group>
                 {
                   <Link to={`/update/${this.state.username}`}>
-                    <Button variant="primary" type="link">
+                    <Button variant="info" type="link">
                       Edit
                     </Button>
                   </Link>
@@ -124,8 +125,8 @@ export class ProfileView extends React.Component {
                   Delete User
                 </Button>
                 <Link to={`/`}>
-                  <Button variant="light" type="submit">
-                    Back
+                  <Button variant="secondary" type="submit">
+                    Back to Movies
                   </Button>
                 </Link>
               </Form>
@@ -143,14 +144,14 @@ export class ProfileView extends React.Component {
                 {favoriteMovieList.map((movie) => {
                   return (
                     <div key={movie._id}>
-                      <Card>
+                      <Card bg="secondary">
                         <Card.Body>
                           <Link to={`/movies/${movie._id}`}>
                             <Card.Title>{movie.Title}</Card.Title>
                           </Link>
                         </Card.Body>
                       </Card>
-                      <Button onClick={() => this.removeFavorite(movie)}>
+                      <Button variant = "info" onClick={() => this.removeFavorite(movie)}>
                         Remove
                       </Button>
                     </div>

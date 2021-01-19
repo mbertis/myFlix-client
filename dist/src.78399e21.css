@@ -1,12 +1,42 @@
+.main-view {
+  background-color: #dcdcdc;
+  width: 100%;
+}
+
+.navbar {
+  background-color: #6c757d;
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.btn-link {
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+.btn-link:hover {
+  color: #17a2b8;
+}
+
+a:hover {
+  color: #17a2b8;
+}
+
+ul {
+  margin: 10px;
+}
 .login-form {
   width: 50%;
   padding: 12px 20px;
   box-sizing: border-box;
   border: 2px solid black;
   display: inline-block;
-  margin-left: 35%;
-  margin-right: 35%;
-  margin-top: 10%;
+  margin-top: 50px;
   background-color: #f8f8ff;
 }
 
@@ -69,6 +99,7 @@ body {
 
 .btn {
   margin: 10px;
+  text-align: center;
 }
 .genre-view {
   background-color: #f8f8ff;
@@ -88,6 +119,9 @@ body {
 
 .btn {
   margin: 10px;
+}
+body {
+  text-align: center;
 }
 .my-flix {
   color: #008b8b;
