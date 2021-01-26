@@ -51426,9 +51426,45 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
     _classCallCheck(this, DirectorView);
 
     _this = _super.call(this);
-    _this.state = {};
+    _this.state = {// movies: []
+    };
     return _this;
-  }
+  } // getMovies(token) {
+  //   axios.get('https://madison-myflix.herokuapp.com/movies', {
+  //     headers: { Authorization: `Bearer ${token}`}  // This type of notation is very important, not regular "" or ''
+  //   })
+  //   .then(response => {
+  //     // #1
+  //     this.setState({
+  //     movies: response.data
+  //   });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
+  // // One of the "hooks" available in a React Component
+  // componentDidMount() {
+  //   let director = movies.Director
+  //   let accessToken = localStorage.getItem('token');
+  //   let directorToken = localStorage.setItem('director', director.Name);
+  //   if (accessToken !== null) {
+  //     this.setState({
+  //       directorToken: localStorage.getItem('director')
+  //     });
+  //     this.getMovies(accessToken);
+  //   }
+  // }
+  // onLoggedIn(authData) {
+  //   console.log(authData);
+  //   this.setState({
+  //     user: authData.user.Username
+  //   });
+  //   localStorage.setItem('token', authData.token);  // auth information received from handleSubmit method is stored in localStorage
+  //   localStorage.setItem('user', authData.user.Username);
+  //   this.getMovies(authData.token);
+  // }
+
 
   _createClass(DirectorView, [{
     key: "render",
@@ -51445,34 +51481,34 @@ var DirectorView = /*#__PURE__*/function (_React$Component) {
         className: "label"
       }, "Name: "), _react.default.createElement("span", {
         className: "value"
-      }, director.Name)), _react.default.createElement("div", {
+      }, director.Director.Name)), _react.default.createElement("div", {
         className: "d-bio"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Bio: "), _react.default.createElement("span", {
         className: "value"
-      }, director.Bio)), _react.default.createElement("div", {
+      }, director.Director.Bio)), _react.default.createElement("div", {
         className: "director-birth"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Birth Year: "), _react.default.createElement("span", {
         className: "value"
-      }, director.Birth)), _react.default.createElement("div", {
+      }, director.Director.Birth)), _react.default.createElement("div", {
         className: "director-death"
       }, _react.default.createElement("span", {
         className: "label"
       }, "Death Year: "), _react.default.createElement("span", {
         className: "value"
-      }, director.Death)), _react.default.createElement(_reactRouterDom.Link, {
+      }, director.Director.Death)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, _react.default.createElement(_button.default, {
         variant: "secondary"
       }, "Back to Movies")), _react.default.createElement(_Container.default, null, _react.default.createElement("h4", {
         className: "mt-4"
-      }, "Some ", director.Name, " movies"), _react.default.createElement("div", {
+      }, "Some ", director.Director.Name, " movies"), _react.default.createElement("div", {
         className: "d-flex row"
       }, movies.map(function (movie) {
-        if (movie.Director.Name === director.Name) {
+        if (movie.Director.Name === director.Director.Name) {
           return _react.default.createElement("div", {
             key: movie._id
           }, _react.default.createElement(_Card.default, {
@@ -51770,19 +51806,20 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
     value: function handleDelete() {
       if (!confirm("Are you sure?")) return;
       var token = localStorage.getItem("token");
-      var url = "https://madison-myflix.herokuapp.com/users/" + this.state.username;
+      var user = localStorage.getItem("user");
+      var url = "https://madison-myflix.herokuapp.com/users/" + user;
 
       _axios.default.delete(url, {
         headers: {
           Authorization: "Bearer ".concat(token)
         }
-      }).then(function (response) {
-        return console.log(response);
+      }).then(function () {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.open("/", "_self");
+      }).catch(function (error) {
+        console.log(error);
       });
-
-      localStorage.removeItem("token");
-      localStorage.removeItem("user");
-      window.open("/", "_self");
     }
   }, {
     key: "render",
@@ -54715,13 +54752,11 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         path: "/directors/:name",
         render: function render(_ref2) {
           var match = _ref2.match;
-          if (!movies) return _react.default.createElement("div", {
-            className: "main-view"
-          });
+          // if (!movies) return <div className="main-view" />;
           return _react.default.createElement(_directorView.DirectorView, {
             director: movies.find(function (m) {
               return m.Director.Name === match.params.name;
-            }).Director,
+            }),
             movies: movies
           });
         }
@@ -54839,7 +54874,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "50485" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "56695" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

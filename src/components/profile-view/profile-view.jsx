@@ -36,7 +36,8 @@ export class ProfileView extends React.Component {
   getUser(token) {
     //console.log(localStorage.getItem("user"));
     let url =
-      "https://madison-myflix.herokuapp.com/users/" + localStorage.getItem("user");
+      "https://madison-myflix.herokuapp.com/users/" +
+      localStorage.getItem("user");
     axios
       .get(url, {
         headers: { Authorization: `Bearer ${token}` },
@@ -53,7 +54,6 @@ export class ProfileView extends React.Component {
       });
   }
 
- 
   removeFavorite(movie) {
     let token = localStorage.getItem("token");
     let url =
@@ -74,16 +74,20 @@ export class ProfileView extends React.Component {
   handleDelete() {
     if (!confirm("Are you sure?")) return;
     let token = localStorage.getItem("token");
-    let url = "https://madison-myflix.herokuapp.com/users/" + this.state.username;
+    let user = localStorage.getItem("user");
+    let url = "https://madison-myflix.herokuapp.com/users/" + user;
     axios
       .delete(url, {
         headers: { Authorization: `Bearer ${token}` },
       })
-      .then((response) => console.log(response));
-
-    localStorage.removeItem("token");
-    localStorage.removeItem("user");
-    window.open("/", "_self");
+      .then(() => {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        window.open("/", "_self");
+      })
+      .catch(function (error) {
+        console.log(error);
+      });
   }
 
   render() {
@@ -151,7 +155,10 @@ export class ProfileView extends React.Component {
                           </Link>
                         </Card.Body>
                       </Card>
-                      <Button variant = "info" onClick={() => this.removeFavorite(movie)}>
+                      <Button
+                        variant="info"
+                        onClick={() => this.removeFavorite(movie)}
+                      >
                         Remove
                       </Button>
                     </div>

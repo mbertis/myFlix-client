@@ -11,8 +11,49 @@ export class DirectorView extends React.Component {
   constructor() {
     super();
 
-    this.state = {};
+    this.state = {
+      // movies: []
+    };
   }
+
+  // getMovies(token) {
+  //   axios.get('https://madison-myflix.herokuapp.com/movies', {
+  //     headers: { Authorization: `Bearer ${token}`}  // This type of notation is very important, not regular "" or ''
+  //   })
+  //   .then(response => {
+  //     // #1
+  //     this.setState({
+  //     movies: response.data
+  //   });
+  //   })
+  //   .catch(function (error) {
+  //     console.log(error);
+  //   });
+  // }
+
+  // // One of the "hooks" available in a React Component
+  // componentDidMount() {
+  //   let director = movies.Director
+  //   let accessToken = localStorage.getItem('token');
+  //   let directorToken = localStorage.setItem('director', director.Name);
+  //   if (accessToken !== null) {
+  //     this.setState({
+  //       directorToken: localStorage.getItem('director')
+  //     });
+  //     this.getMovies(accessToken);
+  //   }
+  // }
+
+  // onLoggedIn(authData) {
+  //   console.log(authData);
+  //   this.setState({
+  //     user: authData.user.Username
+  //   });
+
+  //   localStorage.setItem('token', authData.token);  // auth information received from handleSubmit method is stored in localStorage
+  //   localStorage.setItem('user', authData.user.Username);
+  //   this.getMovies(authData.token);
+  // }
 
   render() {
     const { director, movies } = this.props;
@@ -23,21 +64,21 @@ export class DirectorView extends React.Component {
       <div className="director-view">
         <div className="director-name">
           <span className="label">Name: </span>
-          <span className="value">{director.Name}</span>
+          <span className="value">{director.Director.Name}</span>
         </div>
         <div className="d-bio">
           <span className="label">Bio: </span>
-          <span className="value">{director.Bio}</span>
+          <span className="value">{director.Director.Bio}</span>
         </div>
 
         <div className="director-birth">
           <span className="label">Birth Year: </span>
-          <span className="value">{director.Birth}</span>
+          <span className="value">{director.Director.Birth}</span>
         </div>
 
         <div className="director-death">
           <span className="label">Death Year: </span>
-          <span className="value">{director.Death}</span>
+          <span className="value">{director.Director.Death}</span>
         </div>
 
         <Link to={`/`}>
@@ -45,10 +86,10 @@ export class DirectorView extends React.Component {
         </Link>
 
         <Container>
-          <h4 className="mt-4">Some {director.Name} movies</h4>
+          <h4 className="mt-4">Some {director.Director.Name} movies</h4>
           <div className="d-flex row">
             {movies.map((movie) => {
-              if (movie.Director.Name === director.Name) {
+              if (movie.Director.Name === director.Director.Name) {
                 return (
                   <div key={movie._id}>
                     <Card
