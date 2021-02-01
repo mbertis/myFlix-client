@@ -1,6 +1,16 @@
 import React from "react";
 import axios from "axios";
-import {Row, Col, Container, Navbar, Nav, Form, FormControl, Button, NavDropdown} from "react-bootstrap";
+import {
+  Row,
+  Col,
+  Container,
+  Navbar,
+  Nav,
+  Form,
+  FormControl,
+  Button,
+  NavDropdown,
+} from "react-bootstrap";
 import "./main-view.scss";
 
 import { connect } from "react-redux";
@@ -99,7 +109,7 @@ class MainView extends React.Component {
       <div className="container">
         <div className="row">
           <Router>
-            <Navbar sticky="top" expand="lg" className="mb-2 navbar-styles">
+            {/* <Navbar sticky="top" expand="lg" className="mb-2 navbar-styles">
               <Navbar.Brand className="navbar-brand">
                 <Link to={`/`}>myFlix</Link>
               </Navbar.Brand>
@@ -137,36 +147,30 @@ class MainView extends React.Component {
                   </ul>
                 )}
               </Navbar.Collapse>
-            </Navbar>
-            <Navbar bg="light" expand="lg">
-              <Navbar.Brand href="/">myFlix</Navbar.Brand>
+            </Navbar> */}
+            <Navbar bg="dark" expand="lg">
+              <Navbar.Brand className="navbar-brand">
+                <Link to={`/`}>myFlix</Link>
+              </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
               <Navbar.Collapse id="basic-navbar-nav">
-                <Nav className="mr-auto">                  
+                <Nav className="mr-auto">
                   {!user ? (
-                  <ul>
-                    <Nav.Link to={`/`} href="/">
-                      Login
-                    </Nav.Link>
-                    <Nav.Link to={`/register`} href="/register">
-                      Register
-                    </Nav.Link>
-                  </ul>
-                ) : (
-                  <ul>
-                    <Nav.Link to={`/`} href="/"
-                      onClick={() => this.logOut()}>
-                        Log out                      
-                    </Nav.Link>
-                    <Nav.Link to={`/users/`} href="/users/">Account</Nav.Link>
-                    <Nav.Link to={`/`} href="/">
-                      <Button variant="link">Movies</Button>
-                    </Nav.Link>
-                  </ul>
-                )}
+                    <ul>
+                      <Link to={`/`}>Login</Link>
+                      <Link to={`/register`}>Register</Link>
+                    </ul>
+                  ) : (
+                    <ul>
+                      <Link to={`/`} onClick={() => this.logOut()}>
+                        Log out
+                      </Link>
+                      <Link to={`/users/`}>Account</Link>
+                      <Link to={`/`}>Movies</Link>
+                    </ul>
+                  )}
                 </Nav>
                 <Form inline>
-                  
                   <VisibilityFilterInput visibilityFilter={visibilityFilter} />
                 </Form>
               </Navbar.Collapse>

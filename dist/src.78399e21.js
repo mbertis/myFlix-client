@@ -54751,76 +54751,32 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactBootstrap.Navbar, {
-        sticky: "top",
-        expand: "lg",
-        className: "mb-2 navbar-styles"
+        bg: "dark",
+        expand: "lg"
       }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
         className: "navbar-brand"
       }, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
       }, "myFlix")), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
-        "aria-controls": "basic-navbar-nav",
-        className: "bg-dark"
-      }), _react.default.createElement(_reactBootstrap.Navbar.Collapse, {
-        className: "justify-content-end navbar-dark",
-        id: "basic-navbar-nav"
-      }, _react.default.createElement(_visibilityFilterInput.default, {
-        visibilityFilter: visibilityFilter
-      }), !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link"
-      }, "Login")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/register"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link"
-      }, "Register"))) : _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link",
-        onClick: function onClick() {
-          return _this3.logOut();
-        }
-      }, "Log out")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/users/"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link"
-      }, "Account")), _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link"
-      }, "Movies"))))), _react.default.createElement(_reactBootstrap.Navbar, {
-        bg: "light",
-        expand: "lg"
-      }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
-        href: "/"
-      }, "myFlix"), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
       }), _react.default.createElement(_reactBootstrap.Navbar.Collapse, {
         id: "basic-navbar-nav"
       }, _react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, {
+      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/register"
+      }, "Register")) : _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/",
-        href: "/"
-      }, "Login"), _react.default.createElement(_reactBootstrap.Nav.Link, {
-        to: "/register",
-        href: "/register"
-      }, "Register")) : _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, {
-        to: "/",
-        href: "/",
         onClick: function onClick() {
           return _this3.logOut();
         }
-      }, "Log out"), _react.default.createElement(_reactBootstrap.Nav.Link, {
-        to: "/users/",
-        href: "/users/"
-      }, "Account"), _react.default.createElement(_reactBootstrap.Nav.Link, {
-        to: "/",
-        href: "/"
-      }, _react.default.createElement(_reactBootstrap.Button, {
-        variant: "link"
-      }, "Movies")))), _react.default.createElement(_reactBootstrap.Form, {
+      }, "Log out"), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/users/"
+      }, "Account"), _react.default.createElement(_reactRouterDom.Link, {
+        to: "/"
+      }, "Movies"))), _react.default.createElement(_reactBootstrap.Form, {
         inline: true
       }, _react.default.createElement(_visibilityFilterInput.default, {
         visibilityFilter: visibilityFilter
