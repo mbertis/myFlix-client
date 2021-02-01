@@ -54514,7 +54514,7 @@ function VisibilityFilterInput(props) {
       return props.setFilter(e.target.value);
     },
     value: props.visibilityFilter,
-    placeholder: "filter"
+    placeholder: "Filter by Title"
   });
 }
 
