@@ -157,26 +157,16 @@ class MainView extends React.Component {
                 <Nav className="mr-auto">
                   {!user ? (
                     <ul>
-                      <Nav.Link>
-                        <Link to={`/`}>Login</Link>
-                      </Nav.Link>
-                      <Nav.Link>
-                        <Link to={`/register`}>Register</Link>
-                      </Nav.Link>
+                      <Link to={`/`}>Login</Link>
+                      <Link to={`/register`}>Register</Link>
                     </ul>
                   ) : (
                     <ul>
-                      <Nav.Link>
-                        <Link to={`/`} onClick={() => this.logOut()}>
-                          Log out
-                        </Link>
-                      </Nav.Link>
-                      <Nav.Link>
-                        <Link to={`/users/`}>Account</Link>
-                      </Nav.Link>
-                      <Nav.Link>
-                        <Link to={`/`}>Movies</Link>
-                      </Nav.Link>
+                      <Link to={`/`} onClick={() => this.logOut()}>
+                        Log out
+                      </Link>
+                      <Link to={`/users/`}>Account</Link>
+                      <Link to={`/`}>Movies</Link>
                     </ul>
                   )}
                 </Nav>
