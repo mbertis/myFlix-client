@@ -5,23 +5,33 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from 'react-bootstrap/Button';
 
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from '../movie-card/movie-card';
 
-export function MoviesList(props) {
-  const { movies } = props;
+const mapStateToProps = state => {
+  const { visibilityFilter } = state;
+  return { visibilityFilter } ;
+};
+
+function MoviesList(props) {
+  const { movies, visibilityFilter } = props;
   let fliteredMovies = movies;
+
+  if (visibilityFilter !== "") {
+    fliteredMovies = movies.filter(m => m.Title.toLocaleLowerCase().includes(visibilityFilter.toLocaleLowerCase()));
+  }
 
   if (!movies) return <div className="main-view" />;
 
   return <div className="movies-list">
     <Container>
       <Row>
-        {/* <Col> */}
-        {fliteredMovies.map(m => <Col md={3}><MovieCard key={m._id} movie={m}/></Col>)}
-        {/* </Col> */}
+        {/* <VisibilityFilterInput visibilityFilter={visibilityFilter} /> */}
+        {fliteredMovies.map((m, index) => <Col key={index} md={3}><MovieCard key={m._id} movie={m}/></Col>)}        
       </Row>
     </Container>
     
   </div>;
 }
 
+export default connect(mapStateToProps)(MoviesList);

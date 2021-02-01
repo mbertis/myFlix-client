@@ -1,12 +1,13 @@
 import React from "react";
 import axios from "axios";
-import Button from "react-bootstrap/Button";
-import Navbar from "react-bootstrap/Navbar";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
+import {Row, Col, Container, Navbar, Nav, Form, FormControl, Button, NavDropdown} from "react-bootstrap";
 import "./main-view.scss";
 
+import { connect } from "react-redux";
+
 import { BrowserRouter as Router, Route } from "react-router-dom";
+
+import { setMovies, setUser } from "../../actions/actions";
 
 import { Link } from "react-router-dom";
 
@@ -18,15 +19,16 @@ import { DirectorView } from "../director-view/director-view";
 import { GenreView } from "../genre-view/genre-view";
 import { ProfileView } from "../profile-view/profile-view";
 import { UpdateView } from "../update-profile/update-profile";
-import { MoviesList } from "../movies-list/movies-list";
+import MoviesList from "../movies-list/movies-list";
+import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 
-export class MainView extends React.Component {
+class MainView extends React.Component {
   constructor() {
     // call the superclass constructor so react can initialize it
     super();
     // Initial state is set to null
     this.state = {
-      movies: [],
+      // movies: [],
       user: null,
     };
   }
@@ -38,9 +40,7 @@ export class MainView extends React.Component {
       })
       .then((response) => {
         // #1
-        this.setState({
-          movies: response.data,
-        });
+        this.props.setMovies(response.data);
       })
       .catch(function (error) {
         console.log(error);
@@ -51,9 +51,10 @@ export class MainView extends React.Component {
   componentDidMount() {
     let accessToken = localStorage.getItem("token");
     if (accessToken !== null) {
-      this.setState({
-        user: localStorage.getItem("user"),
-      });
+      // this.setState({
+      //   user: localStorage.getItem("user"),
+      // });
+      this.props.setUser(localStorage.getItem("user"));
       this.getMovies(accessToken);
     }
   }
@@ -67,7 +68,7 @@ export class MainView extends React.Component {
 
   // When a user successfullly logs in, this function updates the 'user' property in state to that particular user
   onLoggedIn(authData) {
-    console.log(authData);
+    // console.log(authData);
     this.setState({
       user: authData.user.Username,
     });
@@ -87,7 +88,9 @@ export class MainView extends React.Component {
   }
 
   render() {
-    const { movies, user } = this.state;
+    // const { movies, user } = this.state;
+    let { movies, visibilityFilter } = this.props;
+    let { user } = this.state;
 
     //Before movies have been loaded
     if (!movies) return <div className="main-view" />;
@@ -108,6 +111,7 @@ export class MainView extends React.Component {
                 className="justify-content-end navbar-dark"
                 id="basic-navbar-nav"
               >
+                <VisibilityFilterInput visibilityFilter={visibilityFilter} />
                 {!user ? (
                   <ul>
                     <Link to={`/`}>
@@ -132,6 +136,39 @@ export class MainView extends React.Component {
                     </Link>
                   </ul>
                 )}
+              </Navbar.Collapse>
+            </Navbar>
+            <Navbar bg="light" expand="lg">
+              <Navbar.Brand href="/">myFlix</Navbar.Brand>
+              <Navbar.Toggle aria-controls="basic-navbar-nav" />
+              <Navbar.Collapse id="basic-navbar-nav">
+                <Nav className="mr-auto">                  
+                  {!user ? (
+                  <ul>
+                    <Nav.Link to={`/`} href="/">
+                      Login
+                    </Nav.Link>
+                    <Nav.Link to={`/register`} href="/register">
+                      Register
+                    </Nav.Link>
+                  </ul>
+                ) : (
+                  <ul>
+                    <Nav.Link to={`/`} href="/"
+                      onClick={() => this.logOut()}>
+                        Log out                      
+                    </Nav.Link>
+                    <Nav.Link to={`/users/`} href="/users/">Account</Nav.Link>
+                    <Nav.Link to={`/`} href="/">
+                      <Button variant="link">Movies</Button>
+                    </Nav.Link>
+                  </ul>
+                )}
+                </Nav>
+                <Form inline>
+                  
+                  <VisibilityFilterInput visibilityFilter={visibilityFilter} />
+                </Form>
               </Navbar.Collapse>
             </Navbar>
             <div className="main-view">
@@ -203,3 +240,9 @@ export class MainView extends React.Component {
     );
   }
 }
+
+let mapStateToProps = (state) => {
+  return { movies: state.movies };
+};
+
+export default connect(mapStateToProps, { setMovies, setUser })(MainView);
