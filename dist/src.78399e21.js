@@ -54763,22 +54763,20 @@ var MainView = /*#__PURE__*/function (_React$Component) {
         id: "basic-navbar-nav"
       }, _react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Login")), _react.default.createElement(_reactBootstrap.Nav.Link, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/register"
-      }, "Register")) : _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, "Register"))) : _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/",
         onClick: function onClick() {
           return _this3.logOut();
         }
-      }, "Log out"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Log out")), _react.default.createElement(_reactBootstrap.Nav.Link, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/users/"
-      }, "Account"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Account")), _react.default.createElement(_reactBootstrap.Nav.Link, null, _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, "Movies"))), _react.default.createElement(_reactBootstrap.Form, {
-        inline: true
-      }, _react.default.createElement(_visibilityFilterInput.default, {
+      }, "Movies")))), _react.default.createElement(_reactBootstrap.Form, null, _react.default.createElement(_visibilityFilterInput.default, {
         visibilityFilter: visibilityFilter
       })))), _react.default.createElement("div", {
         className: "main-view"
