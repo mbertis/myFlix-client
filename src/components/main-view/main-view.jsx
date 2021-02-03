@@ -148,25 +148,31 @@ class MainView extends React.Component {
                 )}
               </Navbar.Collapse>
             </Navbar> */}
-            <Navbar bg="dark" expand="lg">
+            <Navbar bg="secondary" expand="lg">
               <Navbar.Brand className="navbar-brand">
-                <Link to={`/`}>myFlix</Link>
+                <Nav.Link href="/">myFlix</Nav.Link>
               </Navbar.Brand>
               <Navbar.Toggle aria-controls="basic-navbar-nav" />
-              <Navbar.Collapse id="basic-navbar-nav">
+              <Navbar.Collapse>
                 <Nav className="mr-auto">
                   {!user ? (
                     <ul>
-                      <Link to={`/`}>Login</Link>
-                      <Link to={`/register`}>Register</Link>
+                      <Nav.Link as={Link} to="/">
+                        Login
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/register">
+                        Register
+                      </Nav.Link>
                     </ul>
                   ) : (
                     <ul>
-                      <Link to={`/`} onClick={() => this.logOut()}>
-                        Log out
-                      </Link>
-                      <Link to={`/users/`}>Account</Link>
-                      <Link to={`/`}>Movies</Link>
+                      <Nav.Link onClick={() => this.logOut()}>Log out</Nav.Link>
+                      <Nav.Link as={Link} to="/users/">
+                        Account
+                      </Nav.Link>
+                      <Nav.Link as={Link} to="/">
+                        Movies
+                      </Nav.Link>
                     </ul>
                   )}
                 </Nav>

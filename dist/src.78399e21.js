@@ -54751,30 +54751,31 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement("div", {
         className: "row"
       }, _react.default.createElement(_reactRouterDom.BrowserRouter, null, _react.default.createElement(_reactBootstrap.Navbar, {
-        bg: "dark",
+        bg: "secondary",
         expand: "lg"
       }, _react.default.createElement(_reactBootstrap.Navbar.Brand, {
         className: "navbar-brand"
-      }, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/"
+      }, _react.default.createElement(_reactBootstrap.Nav.Link, {
+        href: "/"
       }, "myFlix")), _react.default.createElement(_reactBootstrap.Navbar.Toggle, {
         "aria-controls": "basic-navbar-nav"
-      }), _react.default.createElement(_reactBootstrap.Navbar.Collapse, {
-        id: "basic-navbar-nav"
-      }, _react.default.createElement(_reactBootstrap.Nav, {
+      }), _react.default.createElement(_reactBootstrap.Navbar.Collapse, null, _react.default.createElement(_reactBootstrap.Nav, {
         className: "mr-auto"
-      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
+      }, !user ? _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
         to: "/"
-      }, "Login"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Login"), _react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
         to: "/register"
-      }, "Register")) : _react.default.createElement("ul", null, _react.default.createElement(_reactRouterDom.Link, {
-        to: "/",
+      }, "Register")) : _react.default.createElement("ul", null, _react.default.createElement(_reactBootstrap.Nav.Link, {
         onClick: function onClick() {
           return _this3.logOut();
         }
-      }, "Log out"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Log out"), _react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
         to: "/users/"
-      }, "Account"), _react.default.createElement(_reactRouterDom.Link, {
+      }, "Account"), _react.default.createElement(_reactBootstrap.Nav.Link, {
+        as: _reactRouterDom.Link,
         to: "/"
       }, "Movies"))), _react.default.createElement(_reactBootstrap.Form, null, _react.default.createElement(_visibilityFilterInput.default, {
         visibilityFilter: visibilityFilter
@@ -54903,7 +54904,7 @@ function movies() {
   }
 }
 
-function users() {
+function user() {
   var state = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : "";
   var action = arguments.length > 1 ? arguments[1] : undefined;
 
@@ -54919,7 +54920,7 @@ function users() {
 var moviesApp = (0, _redux.combineReducers)({
   visibilityFilter: visibilityFilter,
   movies: movies,
-  users: users
+  user: user
 }); // //combined reducer
 // function moviesApp(state = {}, action) {
 //   return {
@@ -55035,7 +55036,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59019" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57357" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
