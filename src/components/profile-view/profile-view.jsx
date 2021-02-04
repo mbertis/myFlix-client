@@ -103,7 +103,7 @@ export class ProfileView extends React.Component {
       <div className="userProfile" style={{ display: "flex" }}>
         <Container>
           <Row>
-            <Col>
+            <Col lg>
               <Form style={{ width: "36rem", float: "left" }}>
                 <h1 style={{ textAlign: "center" }}>Profile Details</h1>
                 <Form.Group controlId="formBasicUsername">
@@ -135,7 +135,7 @@ export class ProfileView extends React.Component {
                 </Link>
               </Form>
             </Col>
-            <Col>
+            <Col lg>
               <div
                 className="favoriteMovies"
                 style={{

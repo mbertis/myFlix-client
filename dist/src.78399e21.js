@@ -54228,7 +54228,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
         style: {
           display: "flex"
         }
-      }, _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, null, _react.default.createElement(_Form.default, {
+      }, _react.default.createElement(_Container.default, null, _react.default.createElement(_Row.default, null, _react.default.createElement(_Col.default, {
+        lg: true
+      }, _react.default.createElement(_Form.default, {
         style: {
           width: "36rem",
           float: "left"
@@ -54258,7 +54260,9 @@ var ProfileView = /*#__PURE__*/function (_React$Component) {
       }, _react.default.createElement(_Button.default, {
         variant: "secondary",
         type: "submit"
-      }, "Back to Movies")))), _react.default.createElement(_Col.default, null, _react.default.createElement("div", {
+      }, "Back to Movies")))), _react.default.createElement(_Col.default, {
+        lg: true
+      }, _react.default.createElement("div", {
         className: "favoriteMovies",
         style: {
           float: "right",
@@ -55036,7 +55040,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "57357" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "51349" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};
