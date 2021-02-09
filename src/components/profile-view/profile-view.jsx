@@ -2,12 +2,14 @@ import React from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import PropTypes from "prop-types";
-import Button from "react-bootstrap/Button";
-import Container from "react-bootstrap/Container";
-import Card from "react-bootstrap/Card";
-import Col from "react-bootstrap/Col";
-import Row from "react-bootstrap/Row";
-import Form from "react-bootstrap/Form";
+import {
+  Button,
+  Container,
+  Card,
+  Col,
+  Row,
+  Form
+} from "react-bootstrap";
 import "./profile-view.scss";
 
 export class ProfileView extends React.Component {

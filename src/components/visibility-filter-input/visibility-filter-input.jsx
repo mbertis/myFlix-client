@@ -2,7 +2,7 @@ import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
 
-import Form from "react-bootstrap/Form";
+import { Form, Button } from "react-bootstrap";
 
 import { setFilter } from "../../actions/actions";
 

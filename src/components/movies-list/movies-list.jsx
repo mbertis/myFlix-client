@@ -1,9 +1,11 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import Container from 'react-bootstrap/Container';
-import Row from 'react-bootstrap/Row';
-import Col from 'react-bootstrap/Col';
-import Button from 'react-bootstrap/Button';
+import {
+  Container,
+  Row,
+  Col,
+  Button
+} from "react-bootstrap";
 
 import VisibilityFilterInput from "../visibility-filter-input/visibility-filter-input";
 import { MovieCard } from '../movie-card/movie-card';
