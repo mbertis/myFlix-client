@@ -1,7 +1,7 @@
 import React from "react";
 import axios from "axios";
 import PropTypes from 'prop-types';
-import Button from "react-bootstrap/button";
+import { Form, Button } from "react-bootstrap";
 import "./movie-view.scss";
 
 import { Link } from "react-router-dom";

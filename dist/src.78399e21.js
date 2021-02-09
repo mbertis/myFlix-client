@@ -53247,9 +53247,7 @@ exports.LoginView = LoginView;
 
 var _react = _interopRequireWildcard(require("react"));
 
-var _form = _interopRequireDefault(require("react-bootstrap/form"));
-
-var _button = _interopRequireDefault(require("react-bootstrap/button"));
+var _reactBootstrap = require("react-bootstrap");
 
 var _axios = _interopRequireDefault(require("axios"));
 
@@ -53303,37 +53301,37 @@ function LoginView(props) {
     });
   };
 
-  return _react.default.createElement(_form.default, {
+  return _react.default.createElement(_reactBootstrap.Form, {
     className: "login-form"
-  }, _react.default.createElement("h3", null, "Sign In to myFlix"), _react.default.createElement(_form.default.Group, {
+  }, _react.default.createElement("h3", null, "Sign In to myFlix"), _react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicUsername"
-  }, _react.default.createElement(_form.default.Label, null, "Username:"), _react.default.createElement(_form.default.Control, {
+  }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Username:"), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "text",
     value: username,
     placeholder: "Enter Username",
     onChange: function onChange(e) {
       return setUsername(e.target.value);
     }
-  })), _react.default.createElement(_form.default.Group, {
+  })), _react.default.createElement(_reactBootstrap.Form.Group, {
     controlId: "formBasicPassword"
-  }, _react.default.createElement(_form.default.Label, null, "Password:"), _react.default.createElement(_form.default.Control, {
+  }, _react.default.createElement(_reactBootstrap.Form.Label, null, "Password:"), _react.default.createElement(_reactBootstrap.Form.Control, {
     type: "password",
     value: password,
     placeholder: "Enter Password",
     onChange: function onChange(e) {
       return setPassword(e.target.value);
     }
-  })), _react.default.createElement(_button.default, {
+  })), _react.default.createElement(_reactBootstrap.Button, {
     variant: "info",
     type: "submit",
     onClick: handleSubmit
   }, "Sign In"), _react.default.createElement(_reactRouterDom.Link, {
     to: "/register"
-  }, _react.default.createElement(_button.default, {
+  }, _react.default.createElement(_reactBootstrap.Button, {
     variant: "secondary"
   }, "Create New Account")));
 }
-},{"react":"../node_modules/react/index.js","react-bootstrap/form":"../node_modules/react-bootstrap/esm/Form.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","axios":"../node_modules/axios/index.js","./login-view.scss":"components/login-view/login-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/movie-card/movie-card.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -53451,7 +53449,7 @@ var _axios = _interopRequireDefault(require("axios"));
 
 var _propTypes = _interopRequireDefault(require("prop-types"));
 
-var _button = _interopRequireDefault(require("react-bootstrap/button"));
+var _reactBootstrap = require("react-bootstrap");
 
 require("./movie-view.scss");
 
@@ -53556,20 +53554,20 @@ var MovieView = /*#__PURE__*/function (_React$Component) {
         className: "value"
       }, movie.Director.Name)), _react.default.createElement(_reactRouterDom.Link, {
         to: "/directors/".concat(movie.Director.Name)
-      }, _react.default.createElement(_button.default, {
+      }, _react.default.createElement(_reactBootstrap.Button, {
         variant: "info"
       }, "Director")), _react.default.createElement(_reactRouterDom.Link, {
         to: "/genres/".concat(movie.Genre.Name)
-      }, _react.default.createElement(_button.default, {
+      }, _react.default.createElement(_reactBootstrap.Button, {
         variant: "info"
-      }, "Genre")), _react.default.createElement(_button.default, {
+      }, "Genre")), _react.default.createElement(_reactBootstrap.Button, {
         variant: "info",
         onClick: function onClick() {
           return _this2.addFavorite(movie);
         }
       }, "Add Favorite"), _react.default.createElement(_reactRouterDom.Link, {
         to: "/"
-      }, _react.default.createElement(_button.default, {
+      }, _react.default.createElement(_reactBootstrap.Button, {
         variant: "secondary"
       }, "Back to Movies")));
     }
@@ -53658,7 +53656,7 @@ MovieView.propTypes = {
 //     }).isRequired,
 //   }).isRequired,
 // };
-},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap/button":"../node_modules/react-bootstrap/esm/Button.js","./movie-view.scss":"components/movie-view/movie-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
+},{"react":"../node_modules/react/index.js","axios":"../node_modules/axios/index.js","prop-types":"../node_modules/prop-types/index.js","react-bootstrap":"../node_modules/react-bootstrap/esm/index.js","./movie-view.scss":"components/movie-view/movie-view.scss","react-router-dom":"../node_modules/react-router-dom/esm/react-router-dom.js"}],"components/registration-view/registration-view.scss":[function(require,module,exports) {
 var reloadCSS = require('_css_loader');
 
 module.hot.dispose(reloadCSS);
@@ -54700,10 +54698,10 @@ var MainView = /*#__PURE__*/function (_React$Component) {
       var accessToken = localStorage.getItem("token");
 
       if (accessToken !== null) {
-        // this.setState({
-        //   user: localStorage.getItem("user"),
-        // });
-        this.props.setUser(localStorage.getItem("user"));
+        this.setState({
+          user: localStorage.getItem("user")
+        }); // this.props.setUser(localStorage.getItem("user"));
+
         this.getMovies(accessToken);
       }
     } // Updates the state of the 'selectedMovie' property to that of the selected movie when a movie is clicked
@@ -55040,7 +55038,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "54991" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "59761" + '/');
 
   ws.onmessage = function (event) {
     checkedAssets = {};

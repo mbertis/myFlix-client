@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Form from "react-bootstrap/form";
-import Button from "react-bootstrap/button";
+import { Form, Button } from "react-bootstrap";
 import axios from "axios";
 import "./login-view.scss";
 
@@ -15,18 +14,19 @@ export function LoginView(props) {
     e.preventDefault();
     // console.log(username, password);
     // Send a request to the server for authentication then call props.onLoggedIn(username)
-    axios.post("https://madison-myflix.herokuapp.com/login", {
-      Username: username,
-      Password: password
-    })
-    .then(response => {
-      const data = response.data;
-      props.onLoggedIn(data); // changed from props.onLoggedIn(username) because I need the token as well as the username
-    })
-    .catch(e => {
-      console.log("no such user")
-      alert("No Such User");
-    });
+    axios
+      .post("https://madison-myflix.herokuapp.com/login", {
+        Username: username,
+        Password: password,
+      })
+      .then((response) => {
+        const data = response.data;
+        props.onLoggedIn(data); // changed from props.onLoggedIn(username) because I need the token as well as the username
+      })
+      .catch((e) => {
+        console.log("no such user");
+        alert("No Such User");
+      });
   };
 
   return (
@@ -55,7 +55,7 @@ export function LoginView(props) {
         Sign In
       </Button>
       <Link to={`/register`}>
-          <Button variant="secondary">Create New Account</Button>
+        <Button variant="secondary">Create New Account</Button>
       </Link>
     </Form>
   );
