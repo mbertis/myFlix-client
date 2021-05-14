@@ -25,5 +25,5 @@ server-side code (REST API and database).
 - Initially used Parcel as its build tool
 - Written using the React library and in ES2015+
 - Written with React Redux
-- Uses Bootsrap as a UI library for styling and responsiveness
+- Uses Bootstrap as a UI library for styling and responsiveness
 
