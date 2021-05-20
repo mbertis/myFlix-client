@@ -1,0 +1,131 @@
+.main-view {
+  background-color: #dcdcdc;
+  width: 100%;
+}
+
+.navbar {
+  width: 100%;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+a {
+  color: #fff;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  margin: 10px;
+}
+
+a:hover {
+  color: #17a2b8;
+}
+
+.navbar-light .navbar-nav .nav-link {
+  color: #fff;
+}
+
+.navbar-light .navbar-nav .nav-link:focus,
+.navbar-light .navbar-nav .nav-link:hover {
+  color: #17a2b8;
+}
+
+.nav-link {
+  display: inline-flex;
+}
+
+ul {
+  margin: auto;
+}
+.login-form {
+  width: 50%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: inline-block;
+  margin-top: 50px;
+  background-color: #f8f8ff;
+}
+
+body {
+  background-color: #dcdcdc;
+}
+.movie-card {
+  margin: 20px;
+  background-color: #f8f8ff;
+}
+.movie-view {
+  background-color: #f8f8ff;
+  border: 2px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  padding: 20px 12px;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
+}
+.registration-form {
+  width: 50%;
+  padding: 12px 20px;
+  box-sizing: border-box;
+  border: 2px solid black;
+  display: inline-block;
+  margin-top: 50px;
+  background-color: #f8f8ff;
+}
+
+body {
+  background-color: #dcdcdc;
+}
+.director-view {
+  background-color: #f8f8ff;
+  border: 2px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  padding: 20px 12px;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
+  text-align: center;
+}
+.genre-view {
+  background-color: #f8f8ff;
+  border: 2px solid black;
+  margin-right: 25%;
+  margin-left: 25%;
+  padding: 20px 12px;
+  margin-top: 10%;
+  width: 50%;
+  text-align: center;
+  border-radius: 5%;
+}
+
+.label {
+  font-weight: bold;
+}
+
+.btn {
+  margin: 10px;
+}
+body {
+  text-align: center;
+}
+.my-flix {
+  color: #008b8b;
+}
+/*# sourceMappingURL=index.c71ed24e.css.map */

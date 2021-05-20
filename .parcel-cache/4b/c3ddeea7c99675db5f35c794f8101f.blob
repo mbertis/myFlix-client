@@ -1,0 +1,93 @@
+var helpers = require("../../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "MovieCard", ()=>MovieCard
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactBootstrap = require("react-bootstrap");
+var _movieCardScss = require("./movie-card.scss");
+var _reactRouterDom = require("react-router-dom");
+class MovieCard extends _reactDefault.default.Component {
+    render() {
+        //This is given to the <MovieCard/> component by 'MainView' as 'MainView' is connected to my db via /movies endpoint
+        const { movie  } = this.props;
+        return(/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+            className: "movie-card",
+            style: {
+                width: '16rem'
+            },
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 17
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
+            variant: "top",
+            src: movie.ImagePath,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 18
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 19
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 20
+            },
+            __self: this
+        }, movie.Title), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 21
+            },
+            __self: this
+        }, movie.Description.substring(0, 60), "..."), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+            to: `/movies/${movie._id}`,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 22
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            variant: "info",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movie-card/movie-card.jsx",
+                lineNumber: 23
+            },
+            __self: this
+        }, "Open")))));
+    }
+}
+MovieCard.propTypes = {
+    movie: _propTypesDefault.default.shape({
+        Title: _propTypesDefault.default.string.isRequired,
+        Description: _propTypesDefault.default.string.isRequired,
+        ImagePath: _propTypesDefault.default.string.isRequired,
+        Genre: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        }),
+        Director: _propTypesDefault.default.shape({
+            Name: _propTypesDefault.default.string.isRequired
+        })
+    }).isRequired
+};
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

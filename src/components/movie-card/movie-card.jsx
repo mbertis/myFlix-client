@@ -17,8 +17,8 @@ export class MovieCard extends React.Component {     //Exporting <MovieCard/> he
       <Card className="movie-card" style={{width: '16rem'}}>
         <Card.Img variant="top" src={movie.ImagePath}/>
         <Card.Body>
-          <Card.Title>{movie.Title}</Card.Title>
-          <Card.Text>{movie.Description}</Card.Text>
+          <Card.Title>{movie.Title.substring(0, 15)}...</Card.Title>
+          <Card.Text>{movie.Description.substring(0, 70)}...</Card.Text>
           <Link to={`/movies/${movie._id}`}>
           <Button variant="info">Open</Button>
           </Link>

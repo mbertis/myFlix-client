@@ -1,0 +1,187 @@
+var helpers = require("../../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+parcelHelpers.export(exports, "GenreView", ()=>GenreView
+);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _propTypes = require("prop-types");
+var _propTypesDefault = parcelHelpers.interopDefault(_propTypes);
+var _reactBootstrap = require("react-bootstrap");
+var _genreViewScss = require("./genre-view.scss");
+var _reactRouterDom = require("react-router-dom");
+class GenreView extends _reactDefault.default.Component {
+    constructor(){
+        super();
+        this.state = {
+        };
+    }
+    render() {
+        const { genre , movies , onBackClick  } = this.props;
+        if (!genre) return null;
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-view",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 25
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-name",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 26
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 27
+            },
+            __self: this
+        }, "Name: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 28
+            },
+            __self: this
+        }, genre.Genre.Name)), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "genre-description",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 30
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "label",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 31
+            },
+            __self: this
+        }, "Description: "), /*#__PURE__*/ _reactDefault.default.createElement("span", {
+            className: "value",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, genre.Genre.Description)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+            variant: "secondary",
+            onClick: onBackClick,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 35
+            },
+            __self: this
+        }, "Back"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 37
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("h4", {
+            className: "mt-4",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 38
+            },
+            __self: this
+        }, "Some ", genre.Genre.Name, " movies"), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "d-flex row",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                lineNumber: 39
+            },
+            __self: this
+        }, movies.map((movie)=>{
+            if (movie.Genre.Name === genre.Genre.Name) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+                key: movie._id,
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 43
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card, {
+                className: "mb-3 mr-2 h-100",
+                style: {
+                    width: '16rem'
+                },
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 44
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Img, {
+                variant: "top",
+                src: movie.ImagePath,
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 48
+                },
+                __self: this
+            }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Body, {
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 49
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+                className: "text-muted",
+                to: `/movies/${movie._id}`,
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 50
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Title, {
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 54
+                },
+                __self: this
+            }, movie.Title)), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Text, {
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 56
+                },
+                __self: this
+            }, movie.Description.substring(0, 90), "...")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Card.Footer, {
+                className: "bg-white border-top-0",
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 60
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Link, {
+                to: `/movies/${movie._id}`,
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 61
+                },
+                __self: this
+            }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Button, {
+                variant: "info",
+                className: "read-more-link",
+                __source: {
+                    fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/genre-view/genre-view.jsx",
+                    lineNumber: 62
+                },
+                __self: this
+            }, "Read more"))))));
+        })))));
+    }
+}
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

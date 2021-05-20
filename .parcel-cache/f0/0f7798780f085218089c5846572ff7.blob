@@ -1,0 +1,82 @@
+var helpers = require("../../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _reactRedux = require("react-redux");
+var _reactBootstrap = require("react-bootstrap");
+var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
+var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
+var _movieCard = require("../movie-card/movie-card");
+const mapStateToProps = (state)=>{
+    const { visibilityFilter  } = state;
+    return {
+        visibilityFilter
+    };
+};
+function MoviesList(props) {
+    const { movies , visibilityFilter  } = props;
+    let fliteredMovies = movies;
+    if (visibilityFilter !== "") fliteredMovies = movies.filter((m)=>m.Title.toLocaleLowerCase().includes(visibilityFilter.toLocaleLowerCase())
+    );
+    if (!movies) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "main-view",
+        __source: {
+            fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 26
+        },
+        __self: this
+    }));
+    return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+        className: "movies-list",
+        __source: {
+            fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 28
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Container, {
+        __source: {
+            fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 29
+        },
+        __self: this
+    }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Row, {
+        __source: {
+            fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+            lineNumber: 30
+        },
+        __self: this
+    }, fliteredMovies.map((m, index)=>/*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Col, {
+            key: index,
+            md: 3,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_movieCard.MovieCard, {
+            key: m._id,
+            movie: m,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/movies-list/movies-list.jsx",
+                lineNumber: 32
+            },
+            __self: this
+        }))
+    )))));
+}
+_c = MoviesList;
+exports.default = _reactRedux.connect(mapStateToProps)(MoviesList);
+var _c;
+$RefreshReg$(_c, "MoviesList");
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

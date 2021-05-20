@@ -1,0 +1,339 @@
+var helpers = require("../../../../../../.nvm/versions/node/v14.16.0/lib/node_modules/parcel/node_modules/@parcel/transformer-react-refresh-wrap/lib/helpers/helpers.js");
+var prevRefreshReg = window.$RefreshReg$;
+var prevRefreshSig = window.$RefreshSig$;
+helpers.prelude(module);
+
+try {
+var parcelHelpers = require("@parcel/transformer-js/src/esmodule-helpers.js");
+parcelHelpers.defineInteropFlag(exports);
+var _react = require("react");
+var _reactDefault = parcelHelpers.interopDefault(_react);
+var _axios = require("axios");
+var _axiosDefault = parcelHelpers.interopDefault(_axios);
+var _reactBootstrap = require("react-bootstrap");
+var _mainViewScss = require("./main-view.scss");
+var _reactRedux = require("react-redux");
+var _reactRouterDom = require("react-router-dom");
+var _actions = require("../../actions/actions");
+var _loginView = require("../login-view/login-view"); //LoginView needs to get user details from MainView
+var _movieCard = require("../movie-card/movie-card");
+var _movieView = require("../movie-view/movie-view");
+var _registrationView = require("../registration-view/registration-view");
+var _directorView = require("../director-view/director-view");
+var _genreView = require("../genre-view/genre-view");
+var _profileView = require("../profile-view/profile-view");
+var _updateProfile = require("../update-profile/update-profile");
+var _moviesList = require("../movies-list/movies-list");
+var _moviesListDefault = parcelHelpers.interopDefault(_moviesList);
+var _visibilityFilterInput = require("../visibility-filter-input/visibility-filter-input");
+var _visibilityFilterInputDefault = parcelHelpers.interopDefault(_visibilityFilterInput);
+class MainView extends _reactDefault.default.Component {
+    constructor(){
+        // call the superclass constructor so react can initialize it
+        super();
+        // Initial state is set to null
+        this.state = {
+            // movies: [],
+            user: null
+        };
+    }
+    getMovies(token) {
+        _axiosDefault.default.get("https://madison-myflix.herokuapp.com/movies", {
+            headers: {
+                Authorization: `Bearer ${token}`
+            }
+        }).then((response)=>{
+            // #1
+            this.props.setMovies(response.data);
+        }).catch(function(error) {
+            console.log(error);
+        });
+    }
+    // One of the "hooks" available in a React Component
+    componentDidMount() {
+        let accessToken = localStorage.getItem("token");
+        if (accessToken !== null) {
+            this.setState({
+                user: localStorage.getItem("user")
+            });
+            // this.props.setUser(localStorage.getItem("user"));
+            this.getMovies(accessToken);
+        }
+    }
+    // Updates the state of the 'selectedMovie' property to that of the selected movie when a movie is clicked
+    // onMovieClick(movie) {
+    //   this.setState({
+    //     selectedMovie: movie,
+    //   });
+    // }
+    // When a user successfullly logs in, this function updates the 'user' property in state to that particular user
+    onLoggedIn(authData) {
+        // console.log(authData);
+        this.setState({
+            user: authData.user.Username
+        });
+        localStorage.setItem("token", authData.token); // auth information received from handleSubmit method is stored in localStorage
+        localStorage.setItem("user", authData.user.Username);
+        this.getMovies(authData.token);
+    }
+    // Allows users to log out by removing the user and token from localStorage
+    logOut() {
+        localStorage.removeItem("token");
+        localStorage.removeItem("user");
+        console.log("logout successful");
+        alert("You have been successfully logged out");
+        window.open("/", "_self");
+    }
+    render() {
+        // const { movies, user } = this.state;
+        let { movies , visibilityFilter  } = this.props;
+        let { user  } = this.state;
+        //Before movies have been loaded
+        if (!movies) return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "main-view",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 106
+            },
+            __self: this
+        }));
+        return(/*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "container",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 109
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "row",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 110
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.BrowserRouter, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 111
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar, {
+            bg: "secondary",
+            expand: "lg",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 151
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Brand, {
+            className: "navbar-brand",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 152
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            href: "/",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 153
+            },
+            __self: this
+        }, "myFlix")), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Toggle, {
+            "aria-controls": "basic-navbar-nav",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 155
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Navbar.Collapse, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 156
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav, {
+            className: "mr-auto",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 157
+            },
+            __self: this
+        }, !user ? /*#__PURE__*/ _reactDefault.default.createElement("ul", {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 159
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            as: _reactRouterDom.Link,
+            to: "/",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 160
+            },
+            __self: this
+        }, "Login"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            as: _reactRouterDom.Link,
+            to: "/register",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 163
+            },
+            __self: this
+        }, "Register")) : /*#__PURE__*/ _reactDefault.default.createElement("ul", {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 168
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            onClick: ()=>this.logOut()
+            ,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 169
+            },
+            __self: this
+        }, "Log out"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            as: _reactRouterDom.Link,
+            to: "/users/",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 170
+            },
+            __self: this
+        }, "Account"), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Nav.Link, {
+            as: _reactRouterDom.Link,
+            to: "/",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 173
+            },
+            __self: this
+        }, "Movies"))), /*#__PURE__*/ _reactDefault.default.createElement(_reactBootstrap.Form, {
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 179
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_visibilityFilterInputDefault.default, {
+            visibilityFilter: visibilityFilter,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 180
+            },
+            __self: this
+        })))), /*#__PURE__*/ _reactDefault.default.createElement("div", {
+            className: "main-view",
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 184
+            },
+            __self: this
+        }, /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            exact: true,
+            path: "/",
+            render: ()=>{
+                if (!user) return(/*#__PURE__*/ _reactDefault.default.createElement(_loginView.LoginView, {
+                    onLoggedIn: (user1)=>this.onLoggedIn(user1)
+                }));
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_moviesListDefault.default, {
+                    movies: movies
+                }));
+            },
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 185
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/update/:userId",
+            render: ()=>{
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_updateProfile.UpdateView, null));
+            },
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 196
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/register",
+            render: ()=>/*#__PURE__*/ _reactDefault.default.createElement(_registrationView.RegistrationView, null)
+            ,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 202
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/movies/:movieId",
+            render: ({ match  })=>/*#__PURE__*/ _reactDefault.default.createElement(_movieView.MovieView, {
+                    movie: movies.find((m)=>m._id === match.params.movieId
+                    )
+                })
+            ,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 203
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/users/",
+            render: ()=>/*#__PURE__*/ _reactDefault.default.createElement(_profileView.ProfileView, {
+                    movies: movies,
+                    logOutFunc: ()=>this.logOut()
+                })
+            ,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 211
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/directors/:name",
+            render: ({ match  })=>{
+                // if (!movies) return <div className="main-view" />;
+                return(/*#__PURE__*/ _reactDefault.default.createElement(_directorView.DirectorView, {
+                    director: movies.find((m)=>m.Director.Name === match.params.name
+                    ),
+                    movies: movies,
+                    onBackClick: ()=>window.history.back()
+                }));
+            },
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 221
+            },
+            __self: this
+        }), /*#__PURE__*/ _reactDefault.default.createElement(_reactRouterDom.Route, {
+            path: "/genres/:name",
+            render: ({ match  })=>/*#__PURE__*/ _reactDefault.default.createElement(_genreView.GenreView, {
+                    genre: movies.find((m)=>m.Genre.Name === match.params.name
+                    ),
+                    movies: movies
+                })
+            ,
+            __source: {
+                fileName: "/Users/madisonbertis/Documents/CareerFoundry/myFlix-client/src/components/main-view/main-view.jsx",
+                lineNumber: 236
+            },
+            __self: this
+        }))))));
+    }
+}
+let mapStateToProps = (state)=>{
+    return {
+        movies: state.movies
+    };
+};
+exports.default = _reactRedux.connect(mapStateToProps, {
+    setMovies: _actions.setMovies,
+    setUser: _actions.setUser
+})(MainView);
+
+  helpers.postlude(module);
+} finally {
+  window.$RefreshReg$ = prevRefreshReg;
+  window.$RefreshSig$ = prevRefreshSig;
+}

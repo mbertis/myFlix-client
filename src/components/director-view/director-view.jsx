@@ -19,7 +19,7 @@ export class DirectorView extends React.Component {
   }
 
   render() {
-    const { director, movies } = this.props;
+    const { director, movies, onBackClick } = this.props;
 
     if (!director) return null;
 
@@ -44,9 +44,7 @@ export class DirectorView extends React.Component {
           <span className="value">{director.Director.Death}</span>
         </div>
 
-        <Link to={`/`}>
-          <Button variant="secondary">Back to Movies</Button>
-        </Link>
+        <Button variant="secondary" onClick={ onBackClick }>Back</Button>
 
         <Container>
           <h4 className="mt-4">Some {director.Director.Name} movies</h4>

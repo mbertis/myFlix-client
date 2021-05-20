@@ -228,6 +228,7 @@ class MainView extends React.Component {
                         (m) => m.Director.Name === match.params.name
                       )}
                       movies={movies}
+                      onBackClick={() => window.history.back()}
                     />
                   );
                 }}
@@ -240,6 +241,7 @@ class MainView extends React.Component {
                       (m) => m.Genre.Name === match.params.name
                     )}
                     movies={movies}
+                    onBackClick={() => window.history.back()}
                   />
                 )}
               />
